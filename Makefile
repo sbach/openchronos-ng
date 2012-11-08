@@ -14,6 +14,7 @@ BASH := $(shell which bash || which bash)
 .PHONY: doc
 .PHONY: httpdoc
 .PHONY: force
+.PHONY: run
 
 .PHONY: drivers/rtca_now.h
 
@@ -109,8 +110,12 @@ clean: $(SUBDIRS)
 	@rm -f drivers/rtca_now.h
 
 debug:
-	@echo "Starting debug mode..."
+	@echo "Starting mspdebug..."
 	mspdebug rf2500
+	
+run:
+	@echo "Running the firmware using mspdebug..."
+	mspdebug rf2500 run
 
 doc:
 	rm -rf doc/*
