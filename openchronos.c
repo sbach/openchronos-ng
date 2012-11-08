@@ -514,7 +514,7 @@ void init_application(void)
 	timer0_init();
 	
 	/* Init buzzer */
-	buzzer_init();
+	// buzzer_init();
 
 	// ---------------------------------------------------------------------
 	// Init pressure sensor
