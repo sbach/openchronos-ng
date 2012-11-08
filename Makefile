@@ -14,6 +14,8 @@ BASH := $(shell which bash || which bash)
 .PHONY: httpdoc
 .PHONY: force
 
+.PHONY: drivers/rtca_now.h
+
 all: drivers/rtca_now.h depend config.h openchronos.txt
 
 #
