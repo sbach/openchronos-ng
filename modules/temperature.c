@@ -78,7 +78,7 @@ void display_temperature()
 {
 	int16_t temperature;
 
-	// Display �C / �F
+	// Display °C / °F
 	display_symbol(0,LCD_SEG_L1_DP1, SEG_ON);
 	display_symbol(0,LCD_UNIT_L1_DEGREE, SEG_ON);
 	display_clear(0, 1);
@@ -92,7 +92,7 @@ void display_temperature()
 	}
 #endif
 
-	// When using English units, convert �C to �F (temp*1.8+32)
+	// When using English units, convert °C to °F (temp*1.8+32)
 #ifdef CONFIG_TEMPERATURE_METRIC_ONLY
 		temperature = sTemp.degrees + sTemp.offset;
 #else
