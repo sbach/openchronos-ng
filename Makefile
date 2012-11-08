@@ -9,6 +9,7 @@ BASH := $(shell which bash || which bash)
 .PHONY: clean
 .PHONY: install
 .PHONY: config
+.PHONY: debug
 .PHONY: depend
 .PHONY: doc
 .PHONY: httpdoc
@@ -92,7 +93,13 @@ config:
 	$(PYTHON) tools/make_modinit.py
 
 install: openchronos.txt
+ifeq ($(METHOD), usb)
+	@echo "Installing the new firmware via USB..."
+	mspdebug rf2500 "prog openchronos.elf"
+else
+	@echo "Installing the new firmware via RF..."
 	sudo $(PYTHON) contrib/ChronosTool.py rfbsl $<
+endif
 
 clean: $(SUBDIRS)
 	@for subdir in $(SUBDIRS); do \
@@ -100,6 +107,10 @@ clean: $(SUBDIRS)
 	done
 	@rm -f *.o openchronos.{elf,txt,cflags,dep} output.map
 	@rm -f drivers/rtca_now.h
+
+debug:
+	@echo "Starting debug mode..."
+	mspdebug rf2500
 
 doc:
 	rm -rf doc/*
