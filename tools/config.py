@@ -74,6 +74,13 @@ DATA["CONFIG_RTC_DST_ZONE"] = {
 	"help": "DST Zone: 1=DST_US, 2=DST_MEX, 3=DST_BRZ, 4=DST_EU, 5=DST_AUS, 6=DST_NZ"
 }
 
+DATA["CONFIG_RTC_WD_LANG"] = {
+	"name": "Week day language",
+	"type": "text",
+	"default": 1,
+	"help": "Language IDs: 1=RTCA_WD_EN, 2=RTCA_WD_FR"
+}
+
 # TIMER0 DRIVER ##############################################################
 
 DATA["TEXT_TIMER"] = {

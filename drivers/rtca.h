@@ -20,6 +20,9 @@
 #ifndef __RTCA_H__
 #define __RTCA_H__
 
+#define RTCA_WD_EN 1
+#define RTCA_WD_FR 2
+
 #include <openchronos.h>
 
 enum rtca_tevent {
@@ -34,9 +37,10 @@ enum rtca_tevent {
 
 /* Day of week strings */
 static char const * const rtca_dow_str[] = {
-#ifdef __WEEK_STRINGS_FR__
+#if (CONFIG_RTC_WD_LANG == RTCA_WD_FR)
     "DIM", "LUN", "MAR", "MER", "JEU", "VEN", "SAM"
-#else
+#endif
+#if (CONFIG_RTC_WD_LANG == RTCA_WD_EN)
 	"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
 #endif
 };
