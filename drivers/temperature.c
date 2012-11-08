@@ -116,15 +116,21 @@ void temperature_measurement(uint8_t filter)
 	// = (A10 - 1855) * (667 / 4096)
 	temperature = (((int32_t)((int32_t)adc_result - 1855)) * 667 * 10) / 4096;
 
+	// Add base offset
+#ifdef CONFIG_TEMPERATURE_DEFAULT_OFFSET
+	temperature += CONFIG_TEMPERATURE_DEFAULT_OFFSET;
+#endif
+
 	// Add temperature offset - we do this at display - makes for easier editing
-	//temperature += sTemp.offset;
+	temperature += sTemp.offset;
 
 	// Limit min/max temperature to +/- 50 �C
-	if (temperature > 500) temperature = 500;
-	if (temperature < -500) temperature = -500;
+	//if (temperature > 500) temperature = 500;
+	//if (temperature < -500) temperature = -500;
 
 
 	// Store measured temperature
+	/*
 	if (filter) {
 		// Change temperature in 0.1� steps towards measured value
 		if (temperature > sTemp.degrees)		sTemp.degrees += 1;
@@ -133,6 +139,9 @@ void temperature_measurement(uint8_t filter)
 		// Override filter
 		sTemp.degrees = (int16_t)temperature;
 	}
+	*/
+	
+	sTemp.degrees = (int16_t)temperature;
 }
 
 
