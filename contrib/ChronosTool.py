@@ -11,35 +11,35 @@
 #
 # *************************************************************************************************
 #
-#       Copyright (C) 2010 Texas Instruments Incorporated - http://www.ti.com/
-#
-#
-#         Redistribution and use in source and binary forms, with or without
-#         modification, are permitted provided that the following conditions
+#       Copyright (C) 2010 Texas Instruments Incorporated - http://www.ti.com/ 
+#        
+#        
+#         Redistribution and use in source and binary forms, with or without 
+#         modification, are permitted provided that the following conditions 
 #         are met:
-#
-#           Redistributions of source code must retain the above copyright
+#       
+#           Redistributions of source code must retain the above copyright 
 #           notice, this list of conditions and the following disclaimer.
-#
+#        
 #           Redistributions in binary form must reproduce the above copyright
-#           notice, this list of conditions and the following disclaimer in the
-#           documentation and/or other materials provided with the
+#           notice, this list of conditions and the following disclaimer in the 
+#           documentation and/or other materials provided with the   
 #           distribution.
-#
+#        
 #           Neither the name of Texas Instruments Incorporated nor the names of
 #           its contributors may be used to endorse or promote products derived
 #           from this software without specific prior written permission.
-#
-#         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-#         "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+#       
+#         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+#         "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
 #         LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-#         A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-#         OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-#         SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+#         A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+#         OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+#         SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
 #         LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
 #         DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-#         THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-#         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+#         THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+#         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 #         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # *************************************************************************************************
@@ -63,408 +63,407 @@ import datetime
 
 ###################################################################################################
 class CBMcmd():
-    "Class for handling Chronos Base Module commands"
+	"Class for handling Chronos Base Module commands"
 
-    def __init__( self, opcode, payload=[] ):
-        self.opcode = opcode
-        self.payload = bytearray( payload )
-        self.len = len( self.payload ) + 3
+	def __init__( self, opcode, payload=[] ):
+		self.opcode = opcode
+		self.payload = bytearray( payload )
+		self.len = len( self.payload ) + 3
+	
+	def opcode( self, opcode ):
+		self.opcode = opcode
 
-    def opcode( self, opcode ):
-        self.opcode = opcode
+	@staticmethod
+	def maxlen():
+		return 28
 
-    @staticmethod
-    def maxlen():
-        return 28
+	def len( self ):
+		return self.len
 
-    def len( self ):
-        return self.len
+	def payload( self, payload ):
+		self.payload = bytearray( payload )
+		self.len = len( self.payload ) + 3
 
-    def payload( self, payload ):
-        self.payload = bytearray( payload )
-        self.len = len( self.payload ) + 3
+	def tobytes( self ):
+		return bytearray( [0xff, self.opcode, self.len]  ) + bytearray( self.payload )
 
-    def tobytes( self ):
-        return bytearray( [0xff, self.opcode, self.len]  ) + bytearray( self.payload )
+	def tostr( self ):
+		return str( self.tobytes() )
 
-    def tostr( self ):
-        return str( self.tobytes() )
+	def tohex( self ):
+		return self.tostr().encode('hex')
 
-    def tohex( self ):
-        return self.tostr().encode('hex')
-
-    def getitem( self ):
-        return self.tobytes()
+	def getitem( self ):
+		return self.tobytes()
 
 ###################################################################################################
 class CBMpayload:
-    "Class for handling Chronos Base Module command payloads"
+	"Class for handling Chronos Base Module command payloads"
 
-    def __init__( self, data ):
-        self.data = bytearray( data )
+	def __init__( self, data ):
+		self.data = bytearray( data )
 
-    @staticmethod
-    def maxlen():
-        return CBMcmd.maxlen()
+	@staticmethod
+	def maxlen():
+		return CBMcmd.maxlen()
 
-    def tocmd( self, opcode ):
-        return CBMcmd( opcode, self.data )
+	def tocmd( self, opcode ):
+		return CBMcmd( opcode, self.data )
 
 ###################################################################################################
 class CBMburst:
-    "Class for handling Chronos Base Module bursts"
+	"Class for handling Chronos Base Module bursts"
 
-    max_burst_len = 0xf7
+	max_burst_len = 0xf7
 
-    def __init__( self, type, data ):
-        self.type = type
-        self.data = bytearray( data )
-        self.len = len( self.data ) + 2
+	def __init__( self, type, data ):
+		self.type = type
+		self.data = bytearray( data )
+		self.len = len( self.data ) + 2
 
-    @classmethod
-    def maxlen( cls ):
-        return cls.max_burst_len
+	@classmethod
+	def maxlen( cls ):
+		return cls.max_burst_len
 
-    @classmethod
-    def setmaxlen( cls, len ):
-        cls.max_burst_len = len
-        if opt.verbose:
-            print >> sys.stderr, "Maximum CBM burst length set to", hex( len )
+	@classmethod
+	def setmaxlen( cls, len ):
+		cls.max_burst_len = len
+		if opt.verbose:
+			print >> sys.stderr, "Maximum CBM burst length set to", hex( len )
 
-    def topayloads( self ):
-        #Reshape each burst into payloads
-        max_payload_len = CBMpayload.maxlen()
-        payloads = []
-        burst = bytearray( [self.type, self.len-2] ) + self.data
-        while burst:
-            payload = CBMpayload( burst[:max_payload_len] )
-            burst = burst[max_payload_len:]
-            payloads.append( payload )
-        return payloads
+	def topayloads( self ):
+		#Reshape each burst into payloads
+		max_payload_len = CBMpayload.maxlen()
+		payloads = []
+		burst = bytearray( [self.type, self.len-2] ) + self.data
+		while burst:
+			payload = CBMpayload( burst[:max_payload_len] )
+			burst = burst[max_payload_len:]
+			payloads.append( payload )
+		return payloads
 
 ###################################################################################################
 class CBMchunk:
-    "Class for Chronos Base Module chunks"
+	"Class for Chronos Base Module chunks"
 
-    def __init__( self, address, data ):
-        self.address = address
-        self.data = bytearray( data )
-        self.len = len( self.data ) + 2
+	def __init__( self, address, data ):
+		self.address = address
+		self.data = bytearray( data )
+		self.len = len( self.data ) + 2
 
-    def tobursts( self ):
-        #Reshape chunk into burst sequences
-        max_burst_len = CBMburst.maxlen()
-        bursts = []
-        chunk = bytearray( [self.address>>8, self.address&0xff] ) + self.data
-        nr = 0
-        while chunk:
-            if nr == 0:
-                #First burst
-                burst_id = 0x01
-            else:
-                #Consecutive bursts
-                burst_id = 0x02
-            nr += 1
-            burst = CBMburst( burst_id, chunk[:max_burst_len] )
-            chunk = chunk[max_burst_len:]
-            bursts.append( burst )
-        return bursts
+	def tobursts( self ):
+		#Reshape chunk into burst sequences
+		max_burst_len = CBMburst.maxlen()
+		bursts = []
+		chunk = bytearray( [self.address>>8, self.address&0xff] ) + self.data
+		nr = 0
+		while chunk:
+			if nr == 0:
+				#First burst
+				burst_id = 0x01
+			else:
+				#Consecutive bursts
+				burst_id = 0x02
+			nr += 1
+			burst = CBMburst( burst_id, chunk[:max_burst_len] )
+			chunk = chunk[max_burst_len:]
+			bursts.append( burst )
+		return bursts
 
 ###################################################################################################
 class CBMdata:
-    "Class for Chronos Base Module chunked data"
+	"Class for Chronos Base Module chunked data"
 
-    def __init__( self, data=[] ):
-        self.chunks = []
-        self.data = bytearray( data )
+	def __init__( self, data=[] ):
+		self.chunks = []
+		self.data = bytearray( data )
 
-    def importtxt( self, src ):
-        if isinstance( src, str ):
-            if os.path.exists( src ):
-                file = open( src, "r" )
-                input = file.read()
-                file.close()
-            else:
-                input = src
-        elif isinstance( src, list ):
-            input = src
-        elif isinstance( src, bytearray ):
-            input = str( src )
-        else:
-            print >> sys.stderr, "ERROR: unable to handle argument to importtxt"
-            sys.exit( 9 )
+	def importtxt( self, src ):
+		if isinstance( src, str ):
+			if os.path.exists( src ):
+				file = open( src, "r" )
+				input = file.read()
+				file.close()
+			else:
+				input = src
+		elif isinstance( src, list ):
+			input = src
+		elif isinstance( src, bytearray ):
+			input = str( src )
+		else:
+			print >> sys.stderr, "ERROR: unable to handle argument to importtxt"
+			sys.exit( 9 )
 
-        # Flatten string by removing spaces and newlines
-        input = input.replace( ' ', '' ).replace( '\n', '' )
+		# Flatten string by removing spaces and newlines
+		input = input.replace( ' ', '' ).replace( '\n', '' )
 
-        # Minimal sanity check
-        if input[0] != '@' or input[-1] != 'q':
-            print >> sys.stderr, "ERROR: malformed import data"
-            sys.exit( 9 )
+		# Minimal sanity check
+		if input[0] != '@' or input[-1] != 'q':
+			print >> sys.stderr, "ERROR: malformed import data"
+			sys.exit( 9 )
 
-        # Remove first @ and final q and split into chunks
-        chunks = input[1:-1].split( '@' )
+		# Remove first @ and final q and split into chunks
+		chunks = input[1:-1].split( '@' )
 
-        # Iterate chunks, append to instance
-        for chunk in chunks:
-            # First two bytes are address
-            address = int( chunk[:4], 16 )
-            data = bytearray( chunk[4:].decode( 'hex' ) )
-            if opt.verbose:
-                print >> sys.stderr, "Chunk at address @" + hex(address) + ", length", len(data)
-            self.chunks.append( CBMchunk( address, data ) )
+		# Iterate chunks, append to instance
+		for chunk in chunks:
+			# First two bytes are address
+			address = int( chunk[:4], 16 )
+			data = bytearray( chunk[4:].decode( 'hex' ) )
+			if opt.verbose:
+				print >> sys.stderr, "Chunk at address @" + hex(address) + ", length", len(data)
+			self.chunks.append( CBMchunk( address, data ) )
 
-    def tochunks( self ):
-        return self.chunks
+	def tochunks( self ):
+		return self.chunks
 
 ###################################################################################################
 class CBM:
-    "Class for the Chronos Base Module"
+	"Class for the Chronos Base Module"
 
-    def __init__( self, device_name ):
-        if opt.verbose:
-            print >> sys.stderr, 'Using Chronos Base Module on', device_name
-        #opt will be decomissioned by the time __del__ is called
-        self.optverbose = opt.verbose
-        self.device = serial.Serial( device_name, 115200, timeout = 1 )
-        self.allstatus()
-        if opt.reset:
-            self.reset()
-            self.allstatus()
-        #Original Chronos tool reads twice
-        response = self._wbsl_getmaxpayload()
-        response = self._wbsl_getmaxpayload()
-        CBMburst.setmaxlen( response.payload[0] )
-        self.allstatus()
+	def __init__( self, device_name ):
+		if opt.verbose:
+			print >> sys.stderr, 'Using Chronos Base Module on', device_name
+		#opt will be decomissioned by the time __del__ is called
+		self.optverbose = opt.verbose
+		self.device = serial.Serial( device_name, 115200, timeout = 1 )
+		self.allstatus()
+		if opt.reset:
+			self.reset()
+			self.allstatus()
+		#Original Chronos tool reads twice
+		response = self._wbsl_getmaxpayload()
+		response = self._wbsl_getmaxpayload()
+		CBMburst.setmaxlen( response.payload[0] )
+		self.allstatus()
 
-    def __del__( self ):
-        if self.optverbose:
-            print >> sys.stderr, 'Closing Chronos Base Module at', self.device.port
-        #self.reset()
-        self.device.close
+	def __del__( self ):
+		if self.optverbose:
+			print >> sys.stderr, 'Closing Chronos Base Module at', self.device.port
+		#self.reset()
+		self.device.close
 
-    def send( self, cmd ):
-        self.device.write( cmd.tostr() )
-        time.sleep( 0.015 )
-        if opt.verbose:
-            print >> sys.stderr, 'SENT:', cmd.tohex()
-        response = bytearray( self.device.read( 3 ) )
-        if response[2] > 3:
-            response += bytearray( self.device.read( response[2]-3 ) )
-        self.response = CBMcmd( response[1], response[3:] )
-        if opt.verbose:
-            print >> sys.stderr, 'RECV:', self.response.tohex()
-        return self.response
+	def send( self, cmd ):
+		self.device.write( cmd.tostr() )
+		time.sleep( 0.015 )
+		if opt.verbose:
+			print >> sys.stderr, 'SENT:', cmd.tohex()
+		response = bytearray( self.device.read( 3 ) )
+		if response[2] > 3:
+			response += bytearray( self.device.read( response[2]-3 ) )
+		self.response = CBMcmd( response[1], response[3:] )
+		if opt.verbose:
+			print >> sys.stderr, 'RECV:', self.response.tohex()
+		return self.response
 
-    def sendcmd( self, opcode, payload=[] ):
-        cmd = CBMcmd( opcode, payload )
-        return self.send( cmd )
+	def sendcmd( self, opcode, payload=[] ):
+		cmd = CBMcmd( opcode, payload )
+		return self.send( cmd )
 
-    def _reset( self ):
-        return self.sendcmd( 0x01 )     #BM_Reset
+	def _reset( self ):
+		return self.sendcmd( 0x01 )		#BM_Reset
 
-    def _getstatus( self ):
-        return self.sendcmd( 0x00, [0x00] ) #BM_GetStatus
+	def _getstatus( self ):
+		return self.sendcmd( 0x00, [0x00] )	#BM_GetStatus
 
-    def _br_stop( self ):
-        return self.sendcmd( 0x06 )     #BM_BR_Stop
+	def _br_stop( self ):
+		return self.sendcmd( 0x06 )		#BM_BR_Stop
 
-    def _spl_start( self ):
-        return self.sendcmd( 0x07 )     #BM_SPL_Start
+	def _spl_start( self ):
+		return self.sendcmd( 0x07 )		#BM_SPL_Start
 
-    def _spl_getdata( self ):
-        return self.sendcmd( 0x08, [0x00, 0x00, 0x00, 0x00] )   #BM_GetData
+	def _spl_getdata( self ):
+		return self.sendcmd( 0x08, [0x00, 0x00, 0x00, 0x00] )	#BM_GetData
 
-    def _spl_stop( self ):
-        return self.sendcmd( 0x09 )     #BM_SPL_Stop
+	def _spl_stop( self ):
+		return self.sendcmd( 0x09 )		#BM_SPL_Stop
 
-    def _sync_start( self ):
-        return self.sendcmd( 0x30 )     #BM_SYNC_Start
+	def _sync_start( self ):
+		return self.sendcmd( 0x30 )		#BM_SYNC_Start
 
-    def _sync_getbufferstatus( self ):
-        return self.sendcmd( 0x32, [0x00] ) #BM_SYNC_GetBufferStatus
+	def _sync_getbufferstatus( self ):
+		return self.sendcmd( 0x32, [0x00] )	#BM_SYNC_GetBufferStatus
+	
+	def _sync_readbuffer( self ):
+		return self.sendcmd( 0x33, [0x00] )	#BM_SYNC_ReadBuffer
 
-    def _sync_readbuffer( self ):
-        return self.sendcmd( 0x33, [0x00] ) #BM_SYNC_ReadBuffer
+	def _wbsl_start( self ):
+		return self.sendcmd( 0x40 )		#BM_WBSL_Start
 
-    def _wbsl_start( self ):
-        return self.sendcmd( 0x40 )     #BM_WBSL_Start
+	def _wbsl_stop( self ):
+		return self.sendcmd( 0x46 )		#BM_WBSL_Stop
 
-    def _wbsl_stop( self ):
-        return self.sendcmd( 0x46 )     #BM_WBSL_Stop
+	def _wbsl_getstatus( self ):
+		return self.sendcmd( 0x41, [0x00] )	#BM_WBSL_GetStatus
 
-    def _wbsl_getstatus( self ):
-        return self.sendcmd( 0x41, [0x00] ) #BM_WBSL_GetStatus
+	def _wbsl_getmaxpayload( self ):
+		return self.sendcmd( 0x49, [0x00] )	#BM_WBSL_GetMaxPayload
 
-    def _wbsl_getmaxpayload( self ):
-        return self.sendcmd( 0x49, [0x00] ) #BM_WBSL_GetMaxPayload
+	def _wbsl_getpacketstatus( self ):
+		return self.sendcmd( 0x48, [0x00] )	#BM_WBSL_GetPacketStatus
 
-    def _wbsl_getpacketstatus( self ):
-        return self.sendcmd( 0x48, [0x00] ) #BM_WBSL_GetPacketStatus
+	def reset( self ):
+		self._reset()
+		return self._getstatus()
 
-    def reset( self ):
-        self._reset()
-        return self._getstatus()
+	def spl_start( self ): 
+		return self._spl_start()
 
-    def spl_start( self ):
-        return self._spl_start()
+	def spl_getdata( self ):
+		return self._spl_getdata().payload
 
-    def spl_getdata( self ):
-        return self._spl_getdata().payload
+	def _bit_value( self, val, bit_nr ):
+		return ( val >> bit_nr ) & 1
 
-    def _bit_value( self, val, bit_nr ):
-        return ( val >> bit_nr ) & 1
+	def _mgrav_accel( self, raw ):
+		# Conversion values from data to mgrav taken
+		# from CMA3000-D0x datasheet (rev 0.4, table 4)
+		mgrav_per_bit = [ 18, 36, 71, 143, 286, 571, 1142 ]
 
-    def _mgrav_accel( self, raw ):
-        # Conversion values from data to mgrav taken
-        # from CMA3000-D0x datasheet (rev 0.4, table 4)
-        mgrav_per_bit = [ 18, 36, 71, 143, 286, 571, 1142 ]
+		# fix signedness: uint8 to int8
+		if raw > 128:
+			sign = -1
+			absraw = -raw
+		else:
+			sign = 1
+			absraw = raw
 
-        # fix signedness: uint8 to int8
-        if raw > 128:
-            sign = -1
-            absraw = -raw
-        else:
-            sign = 1
-            absraw = raw
+		mgrav = 0
+		for n in range( 7 ):
+			mgrav += mgrav_per_bit[n] * self._bit_value( absraw, n )
 
-        mgrav = 0
-        for n in range( 7 ):
-            mgrav += mgrav_per_bit[n] * self._bit_value( absraw, n )
+		return sign * mgrav / 1000.0
 
-        return sign * mgrav / 1000.0
+	def spl_getaccel( self ):
+		data = self._spl_getdata().payload
+		ret = [ False, 0, 0, 0 ]
+		if data[0] == 0x01:
+			xval = data[1]
+			yval = data[2]
+			zval = data[3]
+			if opt.raw:
+				# just fix signedness
+				if xval > 128: xval -= 256
+				if yval > 128: yval -= 256
+				if zval > 128: zval -= 256
+			else:
+				# mgrav conversion and g/2 Z axis shift
+				xval = self._mgrav_accel( xval )
+				yval = self._mgrav_accel( yval )
+				zval = self._mgrav_accel( zval ) + 0.42
+			ret = [ True, xval, yval, zval ]
+		return ret
 
-    def spl_getaccel( self ):
-        data = self._spl_getdata().payload
-        ret = [ False, 0, 0, 0 ]
-        if data[0] == 0x01:
-            xval = data[1]
-            yval = data[2]
-            zval = data[3]
-            if opt.raw:
-                # just fix signedness
-                if xval > 128: xval -= 256
-                if yval > 128: yval -= 256
-                if zval > 128: zval -= 256
-            else:
-                # mgrav conversion and g/2 Z axis shift
-                xval = self._mgrav_accel( xval )
-                yval = self._mgrav_accel( yval )
-                zval = self._mgrav_accel( zval ) + 0.42
-            ret = [ True, xval, yval, zval ]
-        return ret
+	def spl_stop( self ):
+		self._spl_start()
+		return self._spl_stop()
 
-    def spl_stop( self ):
-        self._spl_start()
-        return self._spl_stop()
+	def sync_start( self ):
+		return self._sync_start().payload
 
-    def sync_start( self ):
-        return self._sync_start().payload
+	def sync_getbufferstatus( self ):
+		return self._sync_getbufferstatus().payload
 
-    def sync_getbufferstatus( self ):
-        return self._sync_getbufferstatus().payload
+	def wbsl_start( self ):
+		#self.spl_stop()
+		#time.sleep( 0.5 )
+		#self._br_stop()
+		#time.sleep( 1.0 )
+		ret = self._wbsl_start().payload
+		time.sleep( 0.1 )
+		return ret	
 
-    def wbsl_start( self ):
-        #self.spl_stop()
-        #time.sleep( 0.5 )
-        #self._br_stop()
-        #time.sleep( 1.0 )
-        ret = self._wbsl_start().payload
-        time.sleep( 0.1 )
-        return ret
+	def wbsl_stop( self ):
+		return self._wbsl_stop().payload
 
-    def wbsl_stop( self ):
-        return self._wbsl_stop().payload
+	def getstatus( self ):
+		return self._getstatus().payload
 
-    def getstatus( self ):
-        return self._getstatus().payload
+	def wbsl_getstatus( self ):
+		return self._wbsl_getstatus().payload
 
-    def wbsl_getstatus( self ):
-        return self._wbsl_getstatus().payload
+	def wbsl_getpacketstatus( self ):
+		return self._wbsl_getpacketstatus().payload
 
-    def wbsl_getpacketstatus( self ):
-        return self._wbsl_getpacketstatus().payload
+	def allstatus( self ):
+		return [self.getstatus(), self.wbsl_getstatus(), self.wbsl_getpacketstatus()]
+		
+	def sendburst( self, burst ):
+		for payload in burst.topayloads():
+			ret = self.send( payload.tocmd( 0x47 ) )
+		return ret
 
-    def allstatus( self ):
-        return [self.getstatus(), self.wbsl_getstatus(), self.wbsl_getpacketstatus()]
+	def sendburstheader( self, bursts ):
+		#Construct initial info block
+		nr_of_bursts = len( bursts )
+		payload = bytearray( [0x00, nr_of_bursts&0xff, nr_of_bursts>>8] )
+		return self.sendcmd( 0x47, payload )
 
-    def sendburst( self, burst ):
-        for payload in burst.topayloads():
-            ret = self.send( payload.tocmd( 0x47 ) )
-        return ret
+	def spl_sync( self, dt=[], celsius=0, meters=0 ):
+		self.spl_start()
+		raw_input("Put your watch in sync mode, wait a few seconds, and press return...")
+		time.sleep( 2 )
 
-    def sendburstheader( self, bursts ):
-        #Construct initial info block
-        nr_of_bursts = len( bursts )
-        payload = bytearray( [0x00, nr_of_bursts&0xff, nr_of_bursts>>8] )
-        return self.sendcmd( 0x47, payload )
+		if not dt:
+			dt = datetime.datetime.now()
 
-    def spl_sync( self, dt=[], celsius=0, meters=0 ):
-        self.spl_start()
-        raw_input("Ready to sync. Set your watch in sync mode and press enter.")
-        time.sleep(2)
-        if not dt:
-            dt = datetime.datetime.now()
-        print "Syncing Time %s, Temp %s C, and altitude %s m)" % (str(dt), str(celsius), str(meters))
+		payload = bytearray( 0x13 )
+		payload[0x00] = 0x03
+		payload[0x01] = dt.hour+0x80 #assume 24h
+		payload[0x02] = dt.minute
+		payload[0x03] = dt.second
+		payload[0x04] = 0x07
+		payload[0x05] = dt.year-0x700
+		payload[0x06] = dt.month
+		payload[0x07] = dt.day
+		payload[0x08] = 0x06
+		payload[0x09] = 0x1e
+		payload[0x0a] = (celsius*10)>>8
+		payload[0x0b] = (celsius*10)&0xff
+		payload[0x0c] = meters>>8
+		payload[0x0d] = meters&0xff
 
-        payload = bytearray( 0x13 )
-        payload[0x00] = 0x03
-        payload[0x01] = dt.hour+0x80 #assume 24h
-        payload[0x02] = dt.minute
-        payload[0x03] = dt.second
-        payload[0x04] = 0x07
-        payload[0x05] = dt.year-0x700
-        payload[0x06] = dt.month
-        payload[0x07] = dt.day
-        payload[0x08] = 0x06
-        payload[0x09] = 0x1e
-        payload[0x0a] = (celsius*10)>>8
-        payload[0x0b] = (celsius*10)&0xff
-        payload[0x0c] = meters>>8
-        payload[0x0d] = meters&0xff
+		self.sendcmd( 0x31, payload ) #BM_SYNC_SendCommand
+		time.sleep( 2 )
+		self.spl_stop()
 
-        self.sendcmd( 0x31, payload ) #BM_SYNC_SendCommand
-        time.sleep( 2 )
-        self.spl_stop()
-        print "Synced!"
+	def transmitburst( self, data ):
+		self.wbsl_start()
+		time.sleep( 0.5 )
 
-    def transmitburst( self, data ):
-        self.wbsl_start()
-        time.sleep( 0.5 )
+		chunklist = data.tochunks()
+		burstlist = []
+		for chunk in chunklist:
+			burstlist += chunk.tobursts()
 
-        chunklist = data.tochunks()
-        burstlist = []
-        for chunk in chunklist:
-            burstlist += chunk.tobursts()
+		for burst in burstlist:
+			done = 0
+			while not done:
+				status = self.wbsl_getpacketstatus()[0]
+				if   status == 1:	#WBSL_DISABLED
+					time.sleep( 0.2 )
+				elif status == 2:	#WBSL_PROCESSING
+					time.sleep( 0.1 )
+				elif status == 4:	#WBSL_WAITFORSIZE
+					self.sendburstheader( burstlist )
+				elif status == 8:	#WBSL_WAITFORDATA
+					if burstlist:
+						self.sendburst( burstlist[0] )
+						burstlist = burstlist[1:]
+					else:
+						if opt.verbose:
+							print >> sys.stderr, "WARNING: Burstlist underflow"
+						time.sleep(0.05)
+				else:			#WBSL_COMPLETE
+					done = 1
+					break
+		self.wbsl_stop()
 
-        for burst in burstlist:
-            done = 0
-            while not done:
-                status = self.wbsl_getpacketstatus()[0]
-                if   status == 1:   #WBSL_DISABLED
-                    time.sleep( 0.2 )
-                elif status == 2:   #WBSL_PROCESSING
-                    time.sleep( 0.1 )
-                elif status == 4:   #WBSL_WAITFORSIZE
-                    self.sendburstheader( burstlist )
-                elif status == 8:   #WBSL_WAITFORDATA
-                    if burstlist:
-                        self.sendburst( burstlist[0] )
-                        burstlist = burstlist[1:]
-                    else:
-                        if opt.verbose:
-                            print >> sys.stderr, "WARNING: Burstlist underflow"
-                        time.sleep(0.05)
-                else:           #WBSL_COMPLETE
-                    done = 1
-                    break
-        self.wbsl_stop()
+	def wbsl_download( self, txtdata ):
 
-    def wbsl_download( self, txtdata ):
-
-        #Prepare data for downloading to watch
-        updater = CBMdata()
-        updater.importtxt(
+		#Prepare data for downloading to watch
+		updater = CBMdata()
+		updater.importtxt(
 """@1D30
 31 40 FE 2B 3C 40 88 29 3D 40 1C 01 B0 13 78 27
 3C 40 52 29 3D 40 84 1E 3E 40 36 00 B0 13 18 28
@@ -641,103 +640,79 @@ B2 40 40 A5 40 01 10 01 4D 4A 0C 5C 1C 4C 52 29
 9A 27 3D 40 6C 1E 5C 43 80 00 32 25 4C 4A B0 13
 CE 26 80 00 C6 25 B2 B0 10 00 02 0F FC 2B 10 01
 4D 43 4C 43 80 00 CE 26 80 00 66 27 80 00 2C 27
-80 00 1C 28 10 01
+80 00 1C 28 10 01 
 @FFFE
-30 1D
+30 1D 
 q""" )
-        data = CBMdata()
-        print "Reading firmware file"
-        data.importtxt( txtdata )
+		data = CBMdata()
+		data.importtxt( txtdata )
 
-        raw_input("Hit enter to start update process. (or Ctrl+C to exit)")
+		print "Put your watch in rfbsl \"open\" mode and press return. Afterwards,"
+		raw_input( "wait for a few seconds and start rfbsl download on the watch..." )
 
-        print "Ready to update. Set your watch in  rfbsl \"open\" mode."
-        self.transmitburst( updater )
-        print "Sending new firmware.."
-        self.transmitburst( data )
-        time.sleep( 1 )
-        print "Done!"
+		self.transmitburst( updater )
+		self.transmitburst( data )		
+		time.sleep( 1 )
 
 ###################################################################################################
 # main
 
 from optparse import OptionParser
 
-usage = """
-       %prog [options] rfbsl|sync|prg|accel [<arguments> ...]
-
-       %prog [options] rfbsl <firmware file>
-       %prog [options] sync [temperature] [altitude]
-       prg   = rfbsl followed by sync
-       %prog [options] prg <firmware file> [temperature] [altitude]
-       accel = read accelrometer data"""
+usage = "usage: %prog [options] rfbsl|sync|prg|accel [<arguments> ...]"
 parser = OptionParser( usage=usage, version="%prog "+version )
 parser.add_option( "-d", "--device", dest="device", metavar="DEVICE",
-        help="specify USB device of Base Module, will guess if ommited" )
+		help="specify USB device of Base Module, will guess if ommited" )
 parser.add_option( "-n", "--noreset", action="store_false", dest="reset", default=True,
-        help="skip Base Module reset, for resuming streaming etc." )
+		help="skip Base Module reset, for resuming streaming etc." )
 parser.add_option( "-r", "--raw", action="store_true", dest="raw", default=False,
-        help="output raw sensor data" )
+		help="output raw sensor data" )
 parser.add_option( "-v", "--verbose", action="store_true", dest="verbose", default=False,
-        help="show CBM communication" )
+		help="show CBM communication" )
 
 (opt, args) = parser.parse_args()
 
 #Command must be given
 if len( args ) == 0:
-    print >> sys.stderr, "ERROR: you must specify a command"
-    parser.print_help()
-    sys.exit( 5 )
+	print >> sys.stderr, "ERROR: you must specify a command"
+	sys.exit( 5 )
 
 #If no device option given, try to guess
 if not opt.device:
-    device_guess = ["/dev/ttyACM0", "/dev/ttyUSB0", "/dev/cu.usbmodem001"]
-    for path in device_guess:
-        if os.path.exists( path ):
-            opt.device = path
-            break
+	device_guess = ["/dev/ttyACM0", "/dev/ttyUSB0", "/dev/cu.usbmodem001"]
+	for path in device_guess:
+		if os.path.exists( path ):
+			opt.device = path
 #Check for device
 if (not opt.device) or (not os.path.exists( opt.device )):
-    print >> sys.stderr, "ERROR: no Base Module device found, please specify as option"
-    sys.exit( 6 )
+	print >> sys.stderr, "ERROR: no Base Module device found, please specify as option"
+	sys.exit( 6 )
 
 command = args[0]
 if command == "rfbsl":
-    if len( args ) < 2:
-            print >> sys.stderr, "ERROR: rfbsl requires file name as argument"
-            sys.exit( 5 )
-    file = args[1]
-    if not os.path.isfile( file ):
-        print >> sys.stderr, "ERROR: cannot open", file
-        sys.exit( 7 )
-    bm = CBM( opt.device )
-    bm.wbsl_download( file )
+	if len( args ) < 2:
+        	print >> sys.stderr, "ERROR: rfbsl requires file name as argument"
+        	sys.exit( 5 )
+	file = args[1]
+	if not os.path.isfile( file ):
+		print >> sys.stderr, "ERROR: cannot open", file
+		sys.exit( 7 )
+	bm = CBM( opt.device )
+	bm.wbsl_download( file )
 elif command == "sync":
-    bm = CBM( opt.device )
-    temp = 0
-    alt = 0
-    if len(args) >= 2 and args[1].isdigit():
-        temp = int(args[1])
-    if len(args) == 3  and args[2].isdigit():
-        alt = int(args[2])
-    bm.spl_sync(celsius=temp, meters=alt)
+	bm = CBM( opt.device )
+	bm.spl_sync()
 elif command == "prg":
-    if len( args ) < 2:
-            print >> sys.stderr, "ERROR: prg requires file name as argument"
-            sys.exit( 5 )
-    file = args[1]
-    if not os.path.isfile( file ):
-        print >> sys.stderr, "ERROR: cannot open", file
-        sys.exit( 7 )
-    temp = 0
-    alt = 0
-    if len(args) >= 3 and args[2].isdigit():
-        temp = int(args[2])
-    if len(args) == 4  and args[3].isdigit():
-        alt = int(args[3])
-    bm = CBM( opt.device )
-    bm.wbsl_download( file )
-    bm.spl_sync(celsius=temp, meters=alt)
+	if len( args ) < 2:
+        	print >> sys.stderr, "ERROR: prg requires file name as argument"
+        	sys.exit( 5 )
+	file = args[1]
+	if not os.path.isfile( file ):
+		print >> sys.stderr, "ERROR: cannot open", file
+		sys.exit( 7 )
+	bm = CBM( opt.device )
+	bm.wbsl_download( file )
+	bm.spl_sync()
 elif command == "accel":
         bm = CBM( opt.device )
         bm.spl_start()
@@ -746,6 +721,6 @@ elif command == "accel":
                 if data[0]:
                         print str( data[1] ) + " " + str( data[2] ) + " " + str( data[3] )
 else:
-    print >> sys.stderr, "ERROR: invalid command:", command
-    sys.exit( 4 )
+	print >> sys.stderr, "ERROR: invalid command:", command
+	sys.exit( 4 )
 

@@ -92,7 +92,7 @@ config:
 	$(PYTHON) tools/make_modinit.py
 
 install: openchronos.txt
-	contrib/ChronosTool.py rfbsl $<
+	sudo $(PYTHON) contrib/ChronosTool.py rfbsl $<
 
 clean: $(SUBDIRS)
 	@for subdir in $(SUBDIRS); do \
