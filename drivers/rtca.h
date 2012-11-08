@@ -34,7 +34,11 @@ enum rtca_tevent {
 
 /* Day of week strings */
 static char const * const rtca_dow_str[] = {
+#ifdef __WEEK_STRINGS_FR__
+    "DIM", "LUN", "MAR", "MER", "JEU", "VEN", "SAM"
+#else
 	"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
+#endif
 };
 
 struct {

@@ -592,10 +592,10 @@ char *_itopct(uint32_t low,uint32_t high,uint32_t n)
 {
 
 	// Return "0" if the value is under the low
-	if (n < low) return (char *) "   0";
+	if (n < low) return (char *) "  0";
 
 	// Return "100" if the value is over the high
-	if (n > high) return (char *) " 100";
+	if (n > high) return (char *) "100";
 
 	return _sprintf("%3u", (((n*100)-(low*100))/(high-low)));
 }
