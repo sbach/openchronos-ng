@@ -159,9 +159,10 @@ DATA["CONFIG_TEMPERATURE_OFFSET"] = {
 }
 
 DATA["CONFIG_TEMPERATURE_METRIC"] = {
-	"name": "Show in degrees C",
-	"default": True,
-	"help": "Show in degrees C if enabled, F otherwise.",
+	"name": "Metric systems",
+    "type": "text",
+	"default": "0",
+	"help": "0=Only degrees; 1=Only fahrenheit; 2=Both (switchable)",
 }
 
 # AUTOMATICALLY GENERATED MODULE LIST ########################################

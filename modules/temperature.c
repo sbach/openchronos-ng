@@ -1,13 +1,9 @@
 /*
     temperature.c: temperature display module
 
-<<<<<<< HEAD
-    Copyright (C) 2012 	Matthew Excell <matt@excellclan.com>
-    					Stanislas Bach <stanislasbach@gmail.com>
-=======
     Copyright (C) 2012 Angelo Arrifano <miknix@gmail.com>
     Copyright (C) 2012 Matthew Excell <matt@excellclan.com>
->>>>>>> e029f212bac889dd49284466274cbb85f4f99130
+	Copyright (C) 2012 Stanislas Bach <stanislasbach@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,7 +19,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-<<<<<<< HEAD
 // *************************************************************************************************
 //
 //	Copyright (C) 2009 Texas Instruments Incorporated - http://www.ti.com/
@@ -78,11 +73,32 @@
 // *************************************************************************************************
 // Global Variable section
 
-uint8_t temp_edit = 0;
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
 
+int8_t temp_display_metric = 0; // Degrees by default (put this in cfg maybe ?)
+
+#endif
 
 // *************************************************************************************************
 // Extern section
+
+
+// *************************************************************************************************
+// @fn          clear_temperature
+// @brief       Clear the previous value of the temperature on the screen.
+// @return      none
+// *************************************************************************************************
+void display_temp_symbols(int8_t disp)
+{
+	if(disp == 0) {
+		display_symbol(0,LCD_UNIT_L1_DEGREE, SEG_OFF);
+		display_symbol(0, LCD_SYMB_ARROW_UP, SEG_OFF);
+		display_symbol(0, LCD_SYMB_ARROW_DOWN, SEG_OFF);
+	} else {
+		display_symbol(0,LCD_SEG_L1_DP1, SEG_ON);
+		display_symbol(0,LCD_UNIT_L1_DEGREE, SEG_ON);
+	}
+}
 
 
 // *************************************************************************************************
@@ -92,18 +108,25 @@ uint8_t temp_edit = 0;
 // *************************************************************************************************
 void display_temperature()
 {
-	int16_t temperature;
+	int16_t temp_inmetric;
 
-	// Display °C / °F
-	display_symbol(0,LCD_SEG_L1_DP1, SEG_ON);
-	display_symbol(0,LCD_UNIT_L1_DEGREE, SEG_ON);
-
+	// Clear the previous value displayed
 	display_clear(0, 1);
 	
-#ifdef CONFIG_TEMPERATURE_METRIC_ONLY
+	// Display '°' and '.'
+	display_temp_symbols(1);
+	
+	// Display the proper metric unit
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_C
 	display_char(0, LCD_SEG_L1_0, 'C', SEG_ON);
-#else
-	if (sTemp.is_c) {
+#endif
+
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_F
+	display_char(0, LCD_SEG_L1_0, 'F', SEG_ON);
+#endif
+
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
+	if (temp_display_metric == TEMPERATURE_DEGREES_C) {
 		display_char(0, LCD_SEG_L1_0, 'C', SEG_ON);
 	} else {
 		display_char(0, LCD_SEG_L1_0, 'F', SEG_ON);
@@ -111,24 +134,28 @@ void display_temperature()
 #endif
 
 
-	// When using English units, convert °C to °F (temp*1.8+32)
-#ifdef CONFIG_TEMPERATURE_METRIC_ONLY
-	temperature = sTemp.degrees;
-#else
+	// Get the right temperature in the defined metric
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_C
+	temperature_get_C(&temp_inmetric);
+#endif
 
-	if (!sTemp.is_c) {
-		temperature = convert_C_to_F(sTemp.degrees);
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_F
+	temperature_get_F(&temp_inmetric);
+#endif
+
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
+	if(temp_display_metric == TEMPERATURE_DEGREES_C) {
+		temperature_get_C(&temp_inmetric);
 	} else {
-		temperature = sTemp.degrees;
+		temperature_get_F(&temp_inmetric);
 	}
-
 #endif
 
 
 	// Indicate temperature sign through arrow up/down icon
-	if (temperature < 0) {
+	if (temp_inmetric < 0) {
 		// Convert negative to positive number
-		temperature = ~temperature;
+		temp_inmetric = ~temp_inmetric;
 
 		display_symbol(0, LCD_SYMB_ARROW_UP, SEG_OFF);
 		display_symbol(0, LCD_SYMB_ARROW_DOWN, SEG_ON);
@@ -139,65 +166,76 @@ void display_temperature()
 
 
 	// Display result in xx.x format
-	display_chars(0, LCD_SEG_L1_3_1, _sprintf("%2s", temperature), SEG_ON);
-	display_symbol(0, LCD_SEG_L1_DP1, SEG_ON);
+	display_chars(0, LCD_SEG_L1_3_1, _sprintf("%2s", temp_inmetric), SEG_ON);
 }
 
 
-// *************************************************************************************************
-// @fn          display_offset
-// @brief       Offset display routine for metric and English units.
-// @return      none
-// *************************************************************************************************
-void display_offset()
-{	
-	int16_t offset;
-	
-	display_clear(0, 1);
-	
-#ifdef CONFIG_TEMPERATURE_METRIC_ONLY
-	display_char(0, LCD_SEG_L1_0, 'C', SEG_ON);
-#else
-	if (sTemp.is_c) {
-		display_char(0, LCD_SEG_L1_0, 'C', SEG_ON);
-	} else {
-		display_char(0, LCD_SEG_L1_0, 'F', SEG_ON);
-	}
-#endif
+// BEGIN - EDIT_MODE_SECTION ***********************************************************************
 
-#ifdef CONFIG_TEMPERATURE_METRIC_ONLY
-	offset = sTemp.offset;
-#else
-	if (!sTemp.is_c) {
-		offset = convert_C_to_F(sTemp.offset);
-	} else {
-		offset = sTemp.offset;
-	}
-#endif
-
-	display_chars(0, LCD_SEG_L1_3_1, _sprintf("%2s", offset/10), SEG_ON);
-}
-
-
-// *************************************************************************************************
-// @fn          clear_temperature
-// @brief       Clear the previous value of the temperature on the screen.
-// @return      none
-// *************************************************************************************************
-void clear_temperature()
+static void edit_offset_sel(void)
 {
-	display_symbol(0, LCD_SYMB_ARROW_UP, SEG_OFF);
-	display_symbol(0, LCD_SYMB_ARROW_DOWN, SEG_OFF);
-
-	display_clear(0, 1);
-
-	if(!temp_edit)
-	{
-		display_symbol(0,LCD_SEG_L1_DP1, SEG_OFF);
-		display_symbol(0,LCD_UNIT_L1_DEGREE, SEG_OFF);		
-		display_chars(0,LCD_SEG_L1_3_0,NULL,BLINK_OFF);
-	}
+	// Display "OFST" as title
+	display_chars(1, LCD_SEG_L2_3_0, "OFST", SEG_SET);
+	
+	// Display the current offset
+	display_chars(1, LCD_SEG_L1_3_0, _sprintf("%2s", temperature.offset / 10), SEG_SET);
 }
+static void edit_offset_dsel(void)
+{
+	// Nothing to do for now
+}
+static void edit_offset_set(int8_t step)
+{
+	// Edit the offset by 1.0°
+	temperature.offset += step * 10;
+	
+	// Display the current offset
+	display_chars(1, LCD_SEG_L1_3_0, _sprintf("%2s", temperature.offset / 10), SEG_SET);
+}
+
+// *************************************************************************************************
+
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
+
+static void edit_metric_sel(void)
+{
+	// Display "MTRC" as title
+	display_chars(1, LCD_SEG_L2_3_0, "MTRC", SEG_SET);
+	
+	// Display the current metric system used
+	display_chars(1, LCD_SEG_L1_3_0, (temp_display_metric == 0 ? "DEG " : "FARH"), SEG_SET);
+}
+static void edit_metric_dsel(void)
+{
+	// Nothing to do for now
+}
+static void edit_metric_set(int8_t step)
+{
+	// Switch from °C to °F
+	temp_display_metric = (step == 1) ? 0 : 1;
+
+	// Display the current metric system used
+	display_chars(1, LCD_SEG_L1_3_0, (temp_display_metric == 0 ? "DEG " : "FARH"), SEG_SET);
+}
+
+#endif
+
+// *************************************************************************************************
+// @fn          edit_save
+// @brief       Stuff to do when we exit the edit mode
+// @return      none
+// *************************************************************************************************
+static void edit_save()
+{
+	// Disable blinking for the offset value
+	display_chars(1, LCD_SEG_L1_3_0, NULL, BLINK_OFF);
+	
+	// Revert to the default screen (0)
+	lcd_screen_activate(0);
+}
+
+// END - EDIT_MODE_SECTION *************************************************************************
+
 
 // *************************************************************************************************
 // @fn          measure_temp
@@ -206,53 +244,14 @@ void clear_temperature()
 // *************************************************************************************************
 static void measure_temp(enum sys_message msg)
 {
-	if (temp_edit)
-		return;
-=======
-#include <openchronos.h>
-
-/* drivers */
-#include "drivers/display.h"
-#include "drivers/temperature.h"
-
-static void display_temperature(void)
-{
-	int16_t temp;
-#ifdef CONFIG_TEMPERATURE_METRIC
-	temperature_get_C(&temp);
-#else
-	temperature_get_F(&temp);
-#endif
-	_printf(0, LCD_SEG_L2_3_0, "%03s", temperature.offset);
-	_printf(0, LCD_SEG_L1_3_1, "%2s", temp/10);
-	display_char(0, LCD_SEG_L1_0, (temp%10)+48, SEG_SET);
-}
-
-static void measure_temp(enum sys_message msg)
-{
+	// Call the driver to measure the temperature
 	temperature_measurement();
-	display_temperature();
-}
-
-/********************* edit mode callbacks ********************************/
->>>>>>> e029f212bac889dd49284466274cbb85f4f99130
-
-static void edit_offset_sel(void)
-{
-	display_chars(0, LCD_SEG_L2_3_0, NULL, BLINK_ON);
-}
-static void edit_offset_dsel(void)
-{
-	display_chars(0, LCD_SEG_L2_3_0, NULL, BLINK_OFF);
-}
-static void edit_offset_set(int8_t step)
-{
-	temperature.offset += step;
+	
+	// Display new stuff on the screen
 	display_temperature();
 }
 
 
-<<<<<<< HEAD
 // *************************************************************************************************
 // @fn          temperature_activate
 // @brief       Temperature screen activation. Display defaul stuff, register the mesuring loop.
@@ -260,8 +259,16 @@ static void edit_offset_set(int8_t step)
 // *************************************************************************************************
 static void temperature_activate()
 {
+	// Create two screens, the first is always the active one
+	lcd_screens_create(2);
+	
+	// Display the title of this module at the bottom
 	display_chars(0, LCD_SEG_L2_3_0, "TEMP", SEG_SET);
-	display_temperature();
+
+	// Display something while a measure is not performed
+	display_chars(0, LCD_SEG_L1_2_0, " - ", SEG_ON);
+
+	// Register an event
 	sys_messagebus_register(&measure_temp, SYS_MSG_TIMER_4S);
 }
 
@@ -273,108 +280,47 @@ static void temperature_activate()
 // *************************************************************************************************
 static void temperature_deactivate()
 {
-	/* cleanup screen */
+	// Unregister the event
 	sys_messagebus_unregister(&measure_temp);
+	
+	// Cleanup screens
+	display_clear(0, 1);
 	display_clear(0, 2);
-	display_chars(0,LCD_SEG_L1_3_0,NULL,BLINK_OFF);
-	temp_edit = 0;
-	clear_temperature();
+	
+	// Cleanup symbols
+	display_temp_symbols(0);
+	display_symbol(0,LCD_SEG_L1_DP1, SEG_OFF);
 }
 
 
 // *************************************************************************************************
-// @fn          temp_change_units
-// @brief       Switch the display unit for the temperature.
-// @return      none
+// Edit menu for this module
 // *************************************************************************************************
-static void temp_change_units()
-{
-#ifndef CONFIG_TEMPERATURE_METRIC_ONLY
-	sTemp.is_c = !sTemp.is_c;
-#endif
-}
-=======
-static void edit_save()
-{
-	/* turn off blinking segments */
-	display_chars(0, LCD_SEG_L2_3_0, NULL, BLINK_OFF);
-}
-
 static struct menu_editmode_item edit_items[] = {
 	{&edit_offset_sel, &edit_offset_dsel, &edit_offset_set},
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
+	{&edit_metric_sel, &edit_metric_dsel, &edit_metric_set},
+#endif
 	{ NULL },
 };
 
-/************************** menu callbacks ********************************/
->>>>>>> e029f212bac889dd49284466274cbb85f4f99130
-
-static void temperature_activate(void)
-{
-	/* display static elements */
-	display_symbol(0, LCD_UNIT_L1_DEGREE, SEG_ON);
-	display_symbol(0, LCD_SEG_L1_DP0, SEG_ON);
-#ifdef CONFIG_TEMPERATURE_METRIC
-	display_char(0, LCD_SEG_L2_4, 'C', SEG_SET);
-#else
-	display_char(0, LCD_SEG_L2_4, 'F', SEG_SET);
-#endif
-	
-	/* display -- symbol while a measure is not performed */
-	display_chars(0, LCD_SEG_L1_2_0, "---", SEG_ON);
-
-<<<<<<< HEAD
 // *************************************************************************************************
-// @fn          temp_button_up
-// @brief       Routine when the up button is pressed in edit mode.
-//				Increment the temperature's offset by (+ 10) (=1.0°C)
+// @fn          mod_temperature_init
+// @brief       Init the module. Sets default values, register menu entry.
 // @return      none
 // *************************************************************************************************
-static void temp_button_up()
+static void temperature_edit(void)
 {
-	if (temp_edit) {
-		sTemp.offset = sTemp.offset+10;
-		display_offset();
-	} else {
-		temp_change_units();
-	}
-}
-
-
-// *************************************************************************************************
-// @fn          temp_button_down
-// @brief       Routine when the down button is pressed in edit mode.
-//				Increment the temperature's offset by (- 10) (=1.0°C)
-// @return      none
-// *************************************************************************************************
-static void temp_button_down()
-{
-	if (temp_edit) {
-		sTemp.offset = sTemp.offset-10;
-		display_offset();
-	} else {
-		temp_change_units();
-	}
-}
-
-
-// *************************************************************************************************
-// @fn          edit_temp_offset
-// @brief       Edit mode routine. Allows to change the offset's value.
-// @return      none
-// *************************************************************************************************
-static void edit_temp_offset()
-{
-	/* We go into edit mode  */
-	temp_edit = !temp_edit;
+	// display_temp_symbols(0);
 	
-	display_chars(0,LCD_SEG_L1_3_0,NULL,temp_edit ? BLINK_ON : BLINK_OFF);
-	display_chars(0, LCD_SEG_L2_3_0, temp_edit ? "OFST" : "TEMP", SEG_SET);
+	// Switch to the edit screen (1)
+	lcd_screen_activate(1);
 	
-	if(temp_edit)
-	{
-		clear_temperature();
-		display_offset();
-	}
+	// Enable blinking for the offset value
+	display_chars(1, LCD_SEG_L1_3_0, NULL, BLINK_ON);
+	
+	// We go into edit mode
+	menu_editmode_start(&edit_save, edit_items);
 }
 
 
@@ -384,40 +330,11 @@ static void edit_temp_offset()
 // @return      none
 // *************************************************************************************************
 void mod_temperature_init(void)
-{
-	temp_edit = 0;
-	
+{			
 	menu_add_entry(" TEMP",
-			&temp_button_up,
-			&temp_button_down,
-			NULL, NULL,
-			&edit_temp_offset,
-			NULL,
-			&temperature_activate,
-			&temperature_deactivate);
-=======
-	sys_messagebus_register(&measure_temp, SYS_MSG_TIMER_4S);
-}
-
-static void temperature_deactivate(void)
-{
-	sys_messagebus_unregister(&measure_temp);
-	
-	/* cleanup screen */
-	display_symbol(0, LCD_UNIT_L1_DEGREE, SEG_OFF);
-	display_symbol(0, LCD_SEG_L1_DP0, SEG_OFF);
-}
-
-static void temperature_edit(void)
-{
-	/* We go into edit mode  */
-	menu_editmode_start(&edit_save, edit_items);
-}
-
-void mod_temperature_init(void)
-{
-	menu_add_entry(" TEMP", NULL, NULL,
-		NULL, &temperature_edit, NULL, NULL,
-		&temperature_activate, &temperature_deactivate);
->>>>>>> e029f212bac889dd49284466274cbb85f4f99130
+		NULL, NULL, NULL,
+		&temperature_edit,
+		NULL, NULL,
+		&temperature_activate,
+		&temperature_deactivate);
 }

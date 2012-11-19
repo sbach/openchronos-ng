@@ -3,6 +3,7 @@
 
     Copyright (C) 2012 Angelo Arrifano <miknix@gmail.com>
     Copyright (C) 2012 Matthew Excell <matt@excellclan.com>
+    Copyright (C) 2012 Stanislas Bach <stanislasbach@gmail.com>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -67,6 +68,7 @@ void temperature_init(void)
 {
 	temperature.value = adc12_single_conversion(REFVSEL_0,
 						ADC12SHT0_8, ADC12INCH_10);
+						
 	temperature.offset = CONFIG_TEMPERATURE_OFFSET;
 
 	adcresult[0] = temperature.value;
@@ -78,50 +80,10 @@ void temperature_init(void)
 
 void temperature_measurement(void)
 {
-<<<<<<< HEAD
-	uint16_t adc_result;
-	volatile int32_t temperature;
-
-	// Convert internal temperature diode voltage
-	//adc_result = 0;
-	adc_result = adc12_single_conversion(REFVSEL_0, ADC12SHT0_8, ADC12INCH_10);
-
-	// Convert ADC value to "xx.x �C"
-	// Temperature in Celsius
-	// ((A10/4096*1500mV) - 680mV)*(1/2.25mV) = (A10/4096*667) - 302
-	// = (A10 - 1855) * (667 / 4096)
-	temperature = (((int32_t)((int32_t)adc_result - 1855)) * 667 * 10) / 4096;
-
-	// Add base offset
-#ifdef CONFIG_TEMPERATURE_DEFAULT_OFFSET
-	temperature += CONFIG_TEMPERATURE_DEFAULT_OFFSET;
-#endif
-
-	// Add temperature offset - we do this at display - makes for easier editing
-	temperature += sTemp.offset;
-
-	// Limit min/max temperature to +/- 50 �C
-	//if (temperature > 500) temperature = 500;
-	//if (temperature < -500) temperature = -500;
-
-
-	// Store measured temperature
-	/*
-	if (filter) {
-		// Change temperature in 0.1� steps towards measured value
-		if (temperature > sTemp.degrees)		sTemp.degrees += 1;
-		else if (temperature < sTemp.degrees)	sTemp.degrees -= 1;
-	} else {
-		// Override filter
-		sTemp.degrees = (int16_t)temperature;
-	}
-	*/
-	
-	sTemp.degrees = (int16_t)temperature;
-=======
 	/* Convert internal temperature diode voltage */
 	adcresult[adcresult_idx++] = adc12_single_conversion(REFVSEL_0,
 						ADC12SHT0_8, ADC12INCH_10);
+						
 	if (adcresult_idx == TEMPORAL_FILTER_WINDOW)
 		adcresult_idx = 0;
 
@@ -129,9 +91,9 @@ void temperature_measurement(void)
 	temperature.value = (temperature.value & 0xff00)
 		| (((uint16_t)adcresult[0] + (uint16_t)adcresult[1]
 		+ (uint16_t)adcresult[2] + (uint16_t)adcresult[3]) >> 2);
->>>>>>> e029f212bac889dd49284466274cbb85f4f99130
 }
 
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_C || CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
 
 void temperature_get_C(int16_t *temp)
 {
@@ -142,6 +104,10 @@ void temperature_get_C(int16_t *temp)
 	*temp = (((int32_t)temperature.value + temperature.offset - 1855)
 		* 667 * 10) / 4096;
 }
+
+#endif
+
+#if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_F || CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
 
 void temperature_get_F(int16_t *temp)
 {
@@ -159,3 +125,4 @@ void temperature_get_F(int16_t *temp)
 		* 1200 * 10) / 4096;
 }
 
+#endif
