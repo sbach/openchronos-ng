@@ -186,7 +186,7 @@ static void edit_offset_dsel(void)
 }
 static void edit_offset_set(int8_t step)
 {
-	// Edit the offset by 1.0°
+	// Edit the offset by 10 each time (faster)
 	temperature.offset += step * 10;
 	
 	// Display the current offset
@@ -203,7 +203,7 @@ static void edit_metric_sel(void)
 	display_chars(1, LCD_SEG_L2_3_0, "MTRC", SEG_SET);
 	
 	// Display the current metric system used
-	display_chars(1, LCD_SEG_L1_3_0, (temp_display_metric == 0 ? "DEG " : "FARH"), SEG_SET);
+	display_chars(1, LCD_SEG_L1_3_0, (temp_display_metric == 0 ? "CELS " : "FARH"), SEG_SET);
 }
 static void edit_metric_dsel(void)
 {
@@ -215,7 +215,7 @@ static void edit_metric_set(int8_t step)
 	temp_display_metric = (step == 1) ? 0 : 1;
 
 	// Display the current metric system used
-	display_chars(1, LCD_SEG_L1_3_0, (temp_display_metric == 0 ? "DEG " : "FARH"), SEG_SET);
+	display_chars(1, LCD_SEG_L1_3_0, (temp_display_metric == 0 ? "CELS " : "FARH"), SEG_SET);
 }
 
 #endif
