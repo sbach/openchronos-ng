@@ -1,8 +1,13 @@
 /*
     temperature.c: temperature display module
 
+<<<<<<< HEAD
     Copyright (C) 2012 	Matthew Excell <matt@excellclan.com>
     					Stanislas Bach <stanislasbach@gmail.com>
+=======
+    Copyright (C) 2012 Angelo Arrifano <miknix@gmail.com>
+    Copyright (C) 2012 Matthew Excell <matt@excellclan.com>
+>>>>>>> e029f212bac889dd49284466274cbb85f4f99130
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,6 +23,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+<<<<<<< HEAD
 // *************************************************************************************************
 //
 //	Copyright (C) 2009 Texas Instruments Incorporated - http://www.ti.com/
@@ -202,13 +208,51 @@ static void measure_temp(enum sys_message msg)
 {
 	if (temp_edit)
 		return;
+=======
+#include <openchronos.h>
 
-	temperature_measurement(1);
-	display_clear(0, 1);
+/* drivers */
+#include "drivers/display.h"
+#include "drivers/temperature.h"
+
+static void display_temperature(void)
+{
+	int16_t temp;
+#ifdef CONFIG_TEMPERATURE_METRIC
+	temperature_get_C(&temp);
+#else
+	temperature_get_F(&temp);
+#endif
+	_printf(0, LCD_SEG_L2_3_0, "%03s", temperature.offset);
+	_printf(0, LCD_SEG_L1_3_1, "%2s", temp/10);
+	display_char(0, LCD_SEG_L1_0, (temp%10)+48, SEG_SET);
+}
+
+static void measure_temp(enum sys_message msg)
+{
+	temperature_measurement();
+	display_temperature();
+}
+
+/********************* edit mode callbacks ********************************/
+>>>>>>> e029f212bac889dd49284466274cbb85f4f99130
+
+static void edit_offset_sel(void)
+{
+	display_chars(0, LCD_SEG_L2_3_0, NULL, BLINK_ON);
+}
+static void edit_offset_dsel(void)
+{
+	display_chars(0, LCD_SEG_L2_3_0, NULL, BLINK_OFF);
+}
+static void edit_offset_set(int8_t step)
+{
+	temperature.offset += step;
 	display_temperature();
 }
 
 
+<<<<<<< HEAD
 // *************************************************************************************************
 // @fn          temperature_activate
 // @brief       Temperature screen activation. Display defaul stuff, register the mesuring loop.
@@ -249,8 +293,36 @@ static void temp_change_units()
 	sTemp.is_c = !sTemp.is_c;
 #endif
 }
+=======
+static void edit_save()
+{
+	/* turn off blinking segments */
+	display_chars(0, LCD_SEG_L2_3_0, NULL, BLINK_OFF);
+}
 
+static struct menu_editmode_item edit_items[] = {
+	{&edit_offset_sel, &edit_offset_dsel, &edit_offset_set},
+	{ NULL },
+};
 
+/************************** menu callbacks ********************************/
+>>>>>>> e029f212bac889dd49284466274cbb85f4f99130
+
+static void temperature_activate(void)
+{
+	/* display static elements */
+	display_symbol(0, LCD_UNIT_L1_DEGREE, SEG_ON);
+	display_symbol(0, LCD_SEG_L1_DP0, SEG_ON);
+#ifdef CONFIG_TEMPERATURE_METRIC
+	display_char(0, LCD_SEG_L2_4, 'C', SEG_SET);
+#else
+	display_char(0, LCD_SEG_L2_4, 'F', SEG_SET);
+#endif
+	
+	/* display -- symbol while a measure is not performed */
+	display_chars(0, LCD_SEG_L1_2_0, "---", SEG_ON);
+
+<<<<<<< HEAD
 // *************************************************************************************************
 // @fn          temp_button_up
 // @brief       Routine when the up button is pressed in edit mode.
@@ -323,4 +395,29 @@ void mod_temperature_init(void)
 			NULL,
 			&temperature_activate,
 			&temperature_deactivate);
+=======
+	sys_messagebus_register(&measure_temp, SYS_MSG_TIMER_4S);
+}
+
+static void temperature_deactivate(void)
+{
+	sys_messagebus_unregister(&measure_temp);
+	
+	/* cleanup screen */
+	display_symbol(0, LCD_UNIT_L1_DEGREE, SEG_OFF);
+	display_symbol(0, LCD_SEG_L1_DP0, SEG_OFF);
+}
+
+static void temperature_edit(void)
+{
+	/* We go into edit mode  */
+	menu_editmode_start(&edit_save, edit_items);
+}
+
+void mod_temperature_init(void)
+{
+	menu_add_entry(" TEMP", NULL, NULL,
+		NULL, &temperature_edit, NULL, NULL,
+		&temperature_activate, &temperature_deactivate);
+>>>>>>> e029f212bac889dd49284466274cbb85f4f99130
 }

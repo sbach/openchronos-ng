@@ -150,10 +150,18 @@ DATA["TEXT_TEMPERATURE"] = {
 	"type": "info"
 }
 
-DATA["CONFIG_TEMPERATURE_METRIC_ONLY"] = {
-	"name": "Only show in degrees C",
-	"default": False,
-	"help": "Don't build code to convert to F.",
+DATA["CONFIG_TEMPERATURE_OFFSET"] = {
+	"name": "Compensation offset",
+    "type": "text",
+	"default": "-260",
+	"ifndef": True,
+	"help": "Compensate the sensor raw output value with this offset",
+}
+
+DATA["CONFIG_TEMPERATURE_METRIC"] = {
+	"name": "Show in degrees C",
+	"default": True,
+	"help": "Show in degrees C if enabled, F otherwise.",
 }
 
 # AUTOMATICALLY GENERATED MODULE LIST ########################################
@@ -335,6 +343,8 @@ class OpenChronosApp(object):
 			wid._datakey = key
 			wid._datafield = field
 			f = urwid.AttrWrap(wid, 'opt', 'optsel')
+			if field.has_key('ischild') and field['ischild']:
+				f = urwid.Padding(f, width=77, left=3)
 			f._widget = wid
 			WIDMAP[key] = f
 			self.list_content.append(f)

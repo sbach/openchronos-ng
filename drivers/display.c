@@ -580,8 +580,6 @@ char *_sprintf(const char *fmt, int16_t n) {
 // *************************************************************************************************
 // @fn          _itopct
 // @brief       Converts integer n to a percent string between low and high. (uses _itoa internally)
-//				Default conversion result has leading zeros, e.g. "001AF"
-//				Option to convert leading '0' into whitespace (blanks)
 // @param       uint32_t low		0% value
 //				uint32_t high		100% value
 //				uint32_t n			integer to convert
