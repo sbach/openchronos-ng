@@ -181,6 +181,12 @@ void check_events(void)
 		msg |= SYS_MSG_AS_INT;
 		as_last_interrupt = 0;
 	}
+	
+	/* driver/pressure */
+	if(ps_last_interrupt){
+		msg |= SYS_MSG_PS_INT;
+		ps_last_interrupt = 0;
+	}
 
 #ifdef CONFIG_BATTERY_MONITOR
 	/* drivers/battery */
@@ -499,6 +505,14 @@ void init_application(void)
 	as_init();
 #else
 	as_disconnect();
+#endif
+
+#ifdef CONFIG_ALTITUDE
+	// ---------------------------------------------------------------------
+	// Init pressure sensor
+	ps_init();
+#else
+	// TODO Something here ?
 #endif
 
 	// ---------------------------------------------------------------------

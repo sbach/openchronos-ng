@@ -100,6 +100,7 @@ extern int16_t conv_pa_to_altitude(uint32_t p_meas, uint16_t t_meas);
 // *************************************************************************************************
 // Global Variable section
 
+volatile uint8_t ps_last_interrupt;
 
 // *************************************************************************************************
 // Extern section
