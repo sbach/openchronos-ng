@@ -60,8 +60,8 @@
 #include <openchronos.h>
 
 // Driver
-#include "drivers/display.h"
-#include "drivers/altitude.h"
+#include <drivers/display.h>
+#include <drivers/vti_ps.h>
 
 
 // *************************************************************************************************
@@ -71,11 +71,103 @@
 // *************************************************************************************************
 // Global Variable section
 
+struct {
 
+	// Pressure (Pa)
+	uint32_t		pressure;
+
+	// Temperature (°K)
+	uint16_t		temperature;
+
+	// Altitude (m)
+	int16_t		altitude;
+
+	// Altitude offset stored during calibration
+	int16_t		altitude_offset;
+
+	// Timeout
+	uint16_t		timeout;
+	
+} altitude;
+
+// Flag from vti_ps.
+extern uint8_t ps_ok;
 
 
 // *************************************************************************************************
 // Extern section
+
+void start_altitude_measurement(void)
+{
+	// Return if pressure sensor was not initialised properly
+	if (!ps_ok) return;
+	
+	// Enable DRDY IRQ on rising edge
+	PS_INT_IFG &= ~PS_INT_PIN;
+	PS_INT_IE |= PS_INT_PIN;
+
+	// Start pressure sensor
+	ps_start();
+
+	// FIXME Need stuff below ?
+		
+	// Get updated altitude
+	//while ((PS_INT_IN & PS_INT_PIN) == 0);
+
+	//altitude_measurement();
+}
+
+void stop_altitude_measurement(void)
+{
+	// Return if pressure sensor was not initialised properly
+	if (!ps_ok) return;
+
+	// Stop pressure sensor
+	ps_stop();
+
+	// Disable DRDY IRQ
+	PS_INT_IE  &= ~PS_INT_PIN;
+	PS_INT_IFG &= ~PS_INT_PIN;
+}
+
+void altitude_measurement(void)
+{
+	// FIXME Needed ?
+	// If sensor is not ready, skip data read
+	//if ((PS_INT_IN & PS_INT_PIN) == 0)	return;
+	
+	// Get temperature (format is *10?K) from sensor
+	altitude.temperature = ps_get_temp();
+
+	// Get pressure (format is 1Pa) from sensor
+	altitude.pressure = ps_get_pa();
+	
+#ifdef CONFIG_FIXEDPOINT_MATH
+	altitude.altitude = conv_pa_to_altitude(altitude.pressure, altitude.temperature);
+#else
+	altitude.altitude = conv_pa_to_meter(altitude.pressure, altitude.temperature);
+#endif
+}
+
+void altitude_init(void)
+{
+	if (ps_ok)
+	{
+		// Initialise pressure table
+		init_pressure_table();
+
+		// Do single conversion
+		start_altitude_measurement();
+		stop_altitude_measurement();
+
+		// Apply calibration offset and recalculate pressure table
+		if (altitude.altitude_offset != 0)
+		{
+			altitude.altitude += altitude.altitude_offset;
+			update_pressure_table(altitude.altitude, altitude.pressure, altitude.temperature);
+		}
+	}
+}
 
 
 // *************************************************************************************************
@@ -95,7 +187,7 @@ void display_altitude()
 // @brief       Temperature display routine. Mesure and parse the temperature.
 // @return      none
 // *************************************************************************************************
-static void measure_altitude(enum sys_message msg)
+/*static void measure_altitude(enum sys_message msg)
 {
 	// Call the driver to measure the temperature
 	start_altitude_measurement();
@@ -105,7 +197,7 @@ static void measure_altitude(enum sys_message msg)
 	// Display new stuff on the screen
 	display_altitude();
 }
-
+*/
 static void ps_event(enum sys_message msg)
 {
 	//start_altitude_measurement();
