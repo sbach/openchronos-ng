@@ -74,19 +74,19 @@
 struct {
 
 	// Pressure (Pa)
-	uint32_t		pressure;
+	uint32_t pressure;
 
 	// Temperature (°K)
-	uint16_t		temperature;
+	uint16_t temperature;
 
 	// Altitude (m)
-	int16_t		altitude;
+	int16_t	altitude;
 
 	// Altitude offset stored during calibration
-	int16_t		altitude_offset;
+	int16_t	altitude_offset;
 
 	// Timeout
-	uint16_t		timeout;
+	uint16_t timeout;
 	
 } altitude;
 
@@ -102,18 +102,12 @@ void start_altitude_measurement(void)
 	// Return if pressure sensor was not initialised properly
 	if (!ps_ok) return;
 	
-	// Enable DRDY IRQ on rising edge
-	PS_INT_IFG &= ~PS_INT_PIN;
-	PS_INT_IE |= PS_INT_PIN;
-
 	// Start pressure sensor
 	ps_start();
 
-	// FIXME Need stuff below ?
-		
+	// FIXME We have SYS_MSG now, no longer needed
 	// Get updated altitude
 	//while ((PS_INT_IN & PS_INT_PIN) == 0);
-
 	//altitude_measurement();
 }
 
@@ -124,15 +118,11 @@ void stop_altitude_measurement(void)
 
 	// Stop pressure sensor
 	ps_stop();
-
-	// Disable DRDY IRQ
-	PS_INT_IE  &= ~PS_INT_PIN;
-	PS_INT_IFG &= ~PS_INT_PIN;
 }
 
 void altitude_measurement(void)
 {
-	// FIXME Needed ?
+	// FIXME We have SYS_MSG now, no longer needed
 	// If sensor is not ready, skip data read
 	//if ((PS_INT_IN & PS_INT_PIN) == 0)	return;
 	

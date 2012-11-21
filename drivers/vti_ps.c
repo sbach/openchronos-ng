@@ -136,10 +136,13 @@ void ps_init(void)
 // *************************************************************************************************
 void ps_start(void)
 {
+	// Enable DRDY IRQ on rising edge
+	PS_INT_IFG &= ~PS_INT_PIN;
+	PS_INT_IE |= PS_INT_PIN;
+	
 	// Start sampling data in ultra low power mode
 	ps_write_register(0x03, 0x0B);
 }
-
 
 
 // *************************************************************************************************
@@ -150,10 +153,13 @@ void ps_start(void)
 // *************************************************************************************************
 void ps_stop(void)
 {
+	// Disable DRDY IRQ
+	PS_INT_IE  &= ~PS_INT_PIN;
+	PS_INT_IFG &= ~PS_INT_PIN;
+	
 	// Put sensor to standby
 	ps_write_register(0x03, 0x00);
 }
-
 
 
 // *************************************************************************************************
