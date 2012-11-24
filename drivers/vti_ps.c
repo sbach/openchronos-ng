@@ -44,7 +44,7 @@
 
 // driver
 #include "vti_ps.h"
-//#include "timer.h"
+#include "timer.h"
 #ifdef CONFIG_FIXEDPOINT_MATH
 #include "dsp.h"
 #endif
@@ -100,6 +100,7 @@ void ps_init(void)
 
 	PS_INT_DIR &= ~PS_INT_PIN;            	// DRDY is input
 	PS_INT_IES &= ~PS_INT_PIN;				// Interrupt on DRDY rising edge
+	
 	PS_TWI_OUT |= PS_SCL_PIN + PS_SDA_PIN; 	// SCL and SDA are outputs by default
 	PS_TWI_DIR |= PS_SCL_PIN + PS_SDA_PIN; 	// SCL and SDA are outputs by default
 
@@ -108,12 +109,14 @@ void ps_init(void)
 
 	// 100msec delay to allow VDD stabilisation
 	//Timer0_A4_Delay(CONV_MS_TO_TICKS(100));
+	timer0_delay(100, LPM3_bits);
 
 	// Reset pressure sensor -> powerdown sensor
 	success = ps_write_register(0x06, 0x01);
 
 	// 100msec delay
 	//Timer0_A4_Delay(CONV_MS_TO_TICKS(100));
+	timer0_delay(100, LPM3_bits);
 
 	// Check if STATUS register BIT0 is cleared
 	status = ps_read_register(0x07, PS_TWI_8BIT_ACCESS);
@@ -142,6 +145,9 @@ void ps_start(void)
 	
 	// Start sampling data in ultra low power mode
 	ps_write_register(0x03, 0x0B);
+	
+	// 200ms needed to have a working interrupt
+	timer0_delay(200, LPM3_bits);
 }
 
 
@@ -427,6 +433,9 @@ uint16_t ps_get_temp(void)
 
 	// Get 13 bit from TEMPOUT register
 	data = ps_read_register(0x81, PS_TWI_16BIT_ACCESS);
+
+	// FIXME This enable a working pressure sensor
+	//timer0_delay(1000, LPM3_bits);
 
 	// Convert negative temperatures
 	if ((data >> 13) & 0x1) {

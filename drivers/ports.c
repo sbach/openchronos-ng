@@ -26,11 +26,11 @@
 
 #include "display.h"
 
-#ifdef CONFIG_ACCELEROMETER
+#ifdef CONFIG_MOD_ACCELEROMETER
 #include "vti_as.h"
 #endif
 
-#ifdef CONFIG_ALTITUDE
+#ifdef CONFIG_PRESSURE_SENSOR
 #include "vti_ps.h"
 #endif
 
@@ -121,13 +121,17 @@ void PORT2_ISR(void)
 	}
 
 accel_handler:
-	#ifdef CONFIG_ACCELEROMETER
+
+	#ifdef CONFIG_MOD_ACCELEROMETER // TODO Add this in the config.py USE _MOD_ for now ...
 	/* Check if accelerometer interrupt flag */
 	if ((P2IFG & AS_INT_PIN) == AS_INT_PIN)
+	{
+		display_chars(0, LCD_SEG_L1_2_0, "PSF", SEG_ON);
 		as_last_interrupt = 1;
+	}
 	#endif
 	
-	#ifdef CONFIG_ALTITUDE
+	#ifdef CONFIG_PRESSURE_SENSOR
 	/* Check if pressure interrupt flag */
 	if ((P2IFG & PS_INT_PIN) == PS_INT_PIN)
 		ps_last_interrupt = 1;

@@ -104,11 +104,6 @@ void start_altitude_measurement(void)
 	
 	// Start pressure sensor
 	ps_start();
-
-	// FIXME We have SYS_MSG now, no longer needed
-	// Get updated altitude
-	//while ((PS_INT_IN & PS_INT_PIN) == 0);
-	//altitude_measurement();
 }
 
 void stop_altitude_measurement(void)
@@ -122,10 +117,6 @@ void stop_altitude_measurement(void)
 
 void altitude_measurement(void)
 {
-	// FIXME We have SYS_MSG now, no longer needed
-	// If sensor is not ready, skip data read
-	//if ((PS_INT_IN & PS_INT_PIN) == 0)	return;
-	
 	// Get temperature (format is *10?K) from sensor
 	altitude.temperature = ps_get_temp();
 
@@ -141,22 +132,24 @@ void altitude_measurement(void)
 
 void altitude_init(void)
 {
-	if (ps_ok)
+	if (!ps_ok) return;
+	
+	// Initialise pressure table
+	init_pressure_table();
+}
+
+void altitude_reconfigure()
+{
+	// TODO If altitude_offset changed then update the table
+	
+	// Apply calibration offset and recalculate pressure table
+	/*
+	if (altitude.altitude_offset != 0)
 	{
-		// Initialise pressure table
-		init_pressure_table();
-
-		// Do single conversion
-		start_altitude_measurement();
-		stop_altitude_measurement();
-
-		// Apply calibration offset and recalculate pressure table
-		if (altitude.altitude_offset != 0)
-		{
-			altitude.altitude += altitude.altitude_offset;
-			update_pressure_table(altitude.altitude, altitude.pressure, altitude.temperature);
-		}
+		altitude.altitude += altitude.altitude_offset;
+		update_pressure_table(altitude.altitude, altitude.pressure, altitude.temperature);
 	}
+	*/
 }
 
 
@@ -167,36 +160,27 @@ void altitude_init(void)
 // *************************************************************************************************
 void display_altitude()
 {
-	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.pressure), SEG_SET);
-	display_chars(0, LCD_SEG_L2_3_0, _sprintf("%3s", altitude.temperature), SEG_SET);
+	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude), SEG_SET);
 }
 
 
 // *************************************************************************************************
-// @fn          measure_altitude
-// @brief       Temperature display routine. Mesure and parse the temperature.
+// @fn          ps_event
+// @brief      	Event driven routine for the pressure sensor
 // @return      none
 // *************************************************************************************************
-/*static void measure_altitude(enum sys_message msg)
-{
-	// Call the driver to measure the temperature
-	start_altitude_measurement();
-	altitude_measurement();
-	stop_altitude_measurement();
-	
-	// Display new stuff on the screen
-	display_altitude();
-}
-*/
 static void ps_event(enum sys_message msg)
 {
-	//start_altitude_measurement();
+	// Get the altitude from the sensor
 	altitude_measurement();
-	//stop_altitude_measurement();
+	
+	// Reconfigure the sensor if needed
+	altitude_reconfigure();
 	
 	// Display new stuff on the screen
 	display_altitude();
 }
+
 
 // *************************************************************************************************
 // @fn          altitude_activate
@@ -213,14 +197,12 @@ static void altitude_activate()
 	
 	// Register an event
 	sys_messagebus_register(&ps_event, SYS_MSG_PS_INT);
-	
-	// Start the sensor
-	start_altitude_measurement();
 
 	// Init the sensor
 	altitude_init();
-		
-	//sys_messagebus_register(&measure_altitude, SYS_MSG_TIMER_4S);
+			
+	// Start the sensor
+	start_altitude_measurement();
 }
 
 
@@ -232,8 +214,6 @@ static void altitude_activate()
 static void altitude_deactivate()
 {
 	// Unregister the event
-	//sys_messagebus_unregister(&measure_altitude);
-	
 	sys_messagebus_unregister(&ps_event);
 	
 	// Stop the sensor
@@ -253,8 +233,7 @@ void mod_altitude_init(void)
 {			
 	menu_add_entry(" ALTI",
 		NULL, NULL, NULL,
-		NULL,	// FIXME Altitude edit ?
-		NULL, NULL,
+		NULL, NULL, NULL,
 		&altitude_activate,
 		&altitude_deactivate);
 }

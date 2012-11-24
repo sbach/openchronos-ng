@@ -111,7 +111,7 @@ clean: $(SUBDIRS)
 
 debug:
 	@echo "Starting mspdebug..."
-	mspdebug rf2500
+	mspdebug rf2500 gdb
 	
 run:
 	@echo "Running the firmware using mspdebug..."

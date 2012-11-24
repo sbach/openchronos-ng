@@ -499,20 +499,12 @@ void init_application(void)
 	radio_reset();
 	radio_powerdown();
 
-#ifdef CONFIG_ACCELEROMETER
+#ifdef CONFIG_MOD_ACCELEROMETER
 	// ---------------------------------------------------------------------
 	// Init acceleration sensor
 	as_init();
 #else
 	as_disconnect();
-#endif
-
-#ifdef CONFIG_ALTITUDE
-	// ---------------------------------------------------------------------
-	// Init pressure sensor
-	ps_init();
-#else
-	// TODO Something here ?
 #endif
 
 	// ---------------------------------------------------------------------
@@ -528,11 +520,15 @@ void init_application(void)
 	timer0_init();
 	
 	/* Init buzzer */
-	// buzzer_init();
+	buzzer_init();
 
+#ifdef CONFIG_PRESSURE_SENSOR
 	// ---------------------------------------------------------------------
 	// Init pressure sensor
 	ps_init();
+#else
+	// TODO Something here ?
+#endif
 
 	/* drivers/battery */
 	battery_init();

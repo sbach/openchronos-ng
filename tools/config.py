@@ -165,6 +165,19 @@ DATA["CONFIG_TEMPERATURE_METRIC"] = {
 	"help": "0=Only degrees; 1=Only fahrenheit; 2=Both (switchable)",
 }
 
+# PRESSURE SENSOR DRIVER ##################################################
+
+DATA["TEXT_PRESSURE"] = {
+	"name": "Pressure sensor driver",
+	"type": "info"
+}
+
+DATA["CONFIG_PRESSURE_SENSOR"] = {
+	"name": "Enable pressure sensor",
+	"default": True,
+	"help": "TODO",
+}
+
 # AUTOMATICALLY GENERATED MODULE LIST ########################################
 
 DATA["TEXT_MODULES"] = {
