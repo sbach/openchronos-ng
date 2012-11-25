@@ -165,6 +165,9 @@ void ps_stop(void)
 	
 	// Put sensor to standby
 	ps_write_register(0x03, 0x00);
+	
+	// 200ms needed ? FIXME
+	timer0_delay(200, LPM3_bits);
 }
 
 

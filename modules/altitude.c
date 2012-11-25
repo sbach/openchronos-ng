@@ -1,5 +1,5 @@
 /*
-    TODO altitude.c: altitude display module
+    altitude.c: altitude display module
 
 	Copyright (C) 2012 Stanislas Bach <stanislasbach@gmail.com>
 
@@ -67,6 +67,9 @@
 // *************************************************************************************************
 // Defines section
 
+#define ALTITUDE_METRIC_M		0
+#define ALTITUDE_METRIC_FT		1
+#define ALTITUDE_METRIC_BOTH	2
 
 // *************************************************************************************************
 // Global Variable section
@@ -84,36 +87,23 @@ struct {
 
 	// Altitude offset stored during calibration
 	int16_t	altitude_offset;
-
-	// Timeout
-	uint16_t timeout;
 	
 } altitude;
 
 // Flag from vti_ps.
 extern uint8_t ps_ok;
 
+uint8_t need_reconfigure;
+
+#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_FT
+uint8_t display_altitude_metric = 1;
+#else
+uint8_t display_altitude_metric = 0;	// Meter by default for both mode
+#endif
+
 
 // *************************************************************************************************
 // Extern section
-
-void start_altitude_measurement(void)
-{
-	// Return if pressure sensor was not initialised properly
-	if (!ps_ok) return;
-	
-	// Start pressure sensor
-	ps_start();
-}
-
-void stop_altitude_measurement(void)
-{
-	// Return if pressure sensor was not initialised properly
-	if (!ps_ok) return;
-
-	// Stop pressure sensor
-	ps_stop();
-}
 
 void altitude_measurement(void)
 {
@@ -128,28 +118,30 @@ void altitude_measurement(void)
 #else
 	altitude.altitude = conv_pa_to_meter(altitude.pressure, altitude.temperature);
 #endif
-}
 
-void altitude_init(void)
-{
-	if (!ps_ok) return;
-	
-	// Initialise pressure table
-	init_pressure_table();
-}
+#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_FT
+	// TODO Convert altitude.altitude to ft
+#endif
 
-void altitude_reconfigure()
-{
-	// TODO If altitude_offset changed then update the table
-	
-	// Apply calibration offset and recalculate pressure table
-	/*
-	if (altitude.altitude_offset != 0)
+#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_BOTH
+	if(display_altitude_metric == ALTITUDE_METRIC_FT)
 	{
-		altitude.altitude += altitude.altitude_offset;
-		update_pressure_table(altitude.altitude, altitude.pressure, altitude.temperature);
+		// TODO Convert altitude.altitude to ft
 	}
-	*/
+#endif
+
+}
+
+
+// *************************************************************************************************
+// @fn          display_alt_symbols
+// @brief       
+// @return      none
+// *************************************************************************************************
+void display_alt_symbols(int8_t disp)
+{
+	display_symbol(0,LCD_UNIT_L1_FT, (disp && display_altitude_metric == ALTITUDE_METRIC_M)  ? SEG_ON : SEG_OFF);
+	display_symbol(0,LCD_UNIT_L1_M, (disp && display_altitude_metric == ALTITUDE_METRIC_FT) ? SEG_ON : SEG_OFF);
 }
 
 
@@ -164,6 +156,81 @@ void display_altitude()
 }
 
 
+// BEGIN - EDIT_MODE_SECTION ***********************************************************************
+
+static void edit_offset_sel(void)
+{
+	// Display "OFST" as title
+	display_chars(1, LCD_SEG_L2_3_0, "OFST", SEG_SET);
+	
+	// Display the current offset
+	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude + altitude.altitude_offset), SEG_SET); //FIXME
+}
+
+static void edit_offset_dsel(void)
+{
+	// Nothing to do here
+}
+
+static void edit_offset_set(int8_t step)
+{
+	// Edit the offset by 10 each time (faster)
+	altitude.altitude_offset += step * 10;
+	
+	// Display the current offset
+	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude + altitude.altitude_offset), SEG_SET); //FIXME
+}
+
+// *************************************************************************************************
+
+#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_BOTH
+
+static void edit_metric_sel(void)
+{
+	// Clear symbols
+	display_alt_symbols(0);
+	
+	// Display "MTRC" as title
+	display_chars(1, LCD_SEG_L2_3_0, "MTRC", SEG_SET);
+	
+	// Display the current metric system used
+	display_chars(1, LCD_SEG_L1_3_0, (display_altitude_metric == 0 ? "METR " : "FEET"), SEG_SET);
+}
+static void edit_metric_dsel(void)
+{
+	// Show symbols
+	display_alt_symbols(1);
+}
+static void edit_metric_set(int8_t step)
+{
+	// Switch from M to FT
+	display_altitude_metric = (step == 1) ? 0 : 1;
+
+	// Display the current metric system used
+	display_chars(1, LCD_SEG_L1_3_0, (display_altitude_metric == 0 ? "METR " : "FEET"), SEG_SET);
+}
+
+#endif
+
+// *************************************************************************************************
+// @fn          edit_save
+// @brief       Stuff to do when we exit the edit mode
+// @return      none
+// *************************************************************************************************
+static void edit_save()
+{
+	need_reconfigure = 1;
+	
+	// Disable blinking for the offset value
+	display_chars(1, LCD_SEG_L1_3_0, NULL, BLINK_OFF);
+	
+	// Revert to the default screen (0)
+	lcd_screen_activate(0);
+}
+
+// END - EDIT_MODE_SECTION *************************************************************************
+
+
 // *************************************************************************************************
 // @fn          ps_event
 // @brief      	Event driven routine for the pressure sensor
@@ -175,10 +242,46 @@ static void ps_event(enum sys_message msg)
 	altitude_measurement();
 	
 	// Reconfigure the sensor if needed
-	altitude_reconfigure();
+	if (need_reconfigure)
+	{
+		// Apply calibration offset and recalculate pressure table
+		altitude.altitude += altitude.altitude_offset;
+		update_pressure_table(altitude.altitude, altitude.pressure, altitude.temperature);
+	
+		need_reconfigure = 0;
+	}
 	
 	// Display new stuff on the screen
 	display_altitude();
+}
+
+
+// *************************************************************************************************
+// Edit menu for this module
+// *************************************************************************************************
+static struct menu_editmode_item edit_items[] = {
+	{&edit_offset_sel, &edit_offset_dsel, &edit_offset_set},
+#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_BOTH
+	{&edit_metric_sel, &edit_metric_dsel, &edit_metric_set},
+#endif
+	{ NULL },
+};
+
+// *************************************************************************************************
+// @fn          mod_temperature_init
+// @brief       Init the module. Sets default values, register menu entry.
+// @return      none
+// *************************************************************************************************
+static void altitude_edit(void)
+{	
+	// Switch to the edit screen (1)
+	lcd_screen_activate(1);
+	
+	// Enable blinking for the offset value
+	display_chars(1, LCD_SEG_L1_3_0, NULL, BLINK_ON);
+	
+	// We go into edit mode
+	menu_editmode_start(&edit_save, edit_items);
 }
 
 
@@ -188,21 +291,37 @@ static void ps_event(enum sys_message msg)
 // @return      none
 // *************************************************************************************************
 static void altitude_activate()
-{	
+{
+	need_reconfigure = 1;
+
+	// Create two screens, the first is always the active one
+	lcd_screens_create(2);
+	
 	// Display the title of this module at the bottom
 	display_chars(0, LCD_SEG_L2_3_0, "ALTI", SEG_SET);
 
-	// Display something while a measure is not performed
-	display_chars(0, LCD_SEG_L1_2_0, " - ", SEG_ON);
+	// Is the sensor working ?
+	if(ps_ok)
+	{
+		// Display something while a measure is not performed
+		display_chars(0, LCD_SEG_L1_2_0, " - ", SEG_ON);
+		
+		display_alt_symbols(1);
+		
+		// Register an event
+		sys_messagebus_register(&ps_event, SYS_MSG_PS_INT);
 	
-	// Register an event
-	sys_messagebus_register(&ps_event, SYS_MSG_PS_INT);
-
-	// Init the sensor
-	altitude_init();
-			
-	// Start the sensor
-	start_altitude_measurement();
+		// Init the sensor
+		init_pressure_table();
+				
+		// Start the sensor
+		ps_start();
+	}
+	else
+	{
+		// Display an error message
+		display_chars(0, LCD_SEG_L1_2_0, "Err", SEG_ON);
+	}
 }
 
 
@@ -213,14 +332,22 @@ static void altitude_activate()
 // *************************************************************************************************
 static void altitude_deactivate()
 {
-	// Unregister the event
-	sys_messagebus_unregister(&ps_event);
+	// Is the sensor working ?
+	if(ps_ok)
+	{
+		// Unregister the event
+		sys_messagebus_unregister(&ps_event);
 	
-	// Stop the sensor
-	stop_altitude_measurement();
+		// Stop the sensor
+		ps_stop();
+	}
 	
 	// Cleanup screens
 	display_clear(0, 1);
+	display_clear(0, 2);
+	
+	// Cleanup symbols
+	display_alt_symbols(0);
 }
 
 
@@ -233,7 +360,8 @@ void mod_altitude_init(void)
 {			
 	menu_add_entry(" ALTI",
 		NULL, NULL, NULL,
-		NULL, NULL, NULL,
+		&altitude_edit,
+		NULL, NULL,
 		&altitude_activate,
 		&altitude_deactivate);
 }
