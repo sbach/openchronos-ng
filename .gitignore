@@ -5,6 +5,9 @@
 /Dependencies.mk
 /Build.log
 
+# Python compiled files
+*.pyc
+
 # Object files
 *.o
 
