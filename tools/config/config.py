@@ -270,7 +270,7 @@ class OpenChronosApp(object):
 					dat["value"] = dat["default"]
 
 		try:
-			fp = open("config.h")
+			fp = open("config/config.h")
 		except (OSError, IOError):
 			set_default()
 			return
