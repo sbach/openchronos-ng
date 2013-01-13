@@ -1,5 +1,0 @@
-<map id="ps_write_register" name="ps_write_register">
-<area shape="rect" id="node3" href="$d8/d28/vti__ps_8c.xhtml#a5a111736e7d7fbbed73c189ed1d45b81" title="ps_twi_sda" alt="" coords="180,5,268,32"/>
-<area shape="rect" id="node7" href="$d8/d28/vti__ps_8c.xhtml#a49dfd78503815814186a48488c6a991f" title="ps_twi_write" alt="" coords="177,56,271,83"/>
-<area shape="rect" id="node5" href="$d8/d28/vti__ps_8c.xhtml#aeec2d2e61bf0b7d2e9f09c4b4fac4490" title="twi_delay" alt="" coords="320,31,397,57"/>
-</map>

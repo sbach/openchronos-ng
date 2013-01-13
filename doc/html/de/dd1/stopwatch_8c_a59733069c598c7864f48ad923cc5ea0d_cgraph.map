@@ -1,8 +1,0 @@
-<map id="num_press" name="num_press">
-<area shape="rect" id="node3" href="$de/dd1/stopwatch_8c.xhtml#a8ef9fc26e81a38682849cab809cc500e" title="drawStopWatchScreen" alt="" coords="142,31,298,57"/>
-<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="347,5,450,32"/>
-<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="499,56,611,83"/>
-<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="507,5,602,32"/>
-<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="659,5,749,32"/>
-<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="798,31,909,57"/>
-</map>

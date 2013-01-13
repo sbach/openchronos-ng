@@ -1,5 +1,0 @@
-<map id="radio_reset" name="radio_reset">
-<area shape="rect" id="node3" href="$d6/dc2/rf1a_8c.xhtml#a945d18674a1ebb9b90e50dd79c1b616d" title="Strobe" alt="" coords="142,31,202,57"/>
-<area shape="rect" id="node5" href="$d6/dc2/rf1a_8c.xhtml#a2054867692e5cbdbb05e4e259f9f6638" title="ReadSingleReg" alt="" coords="251,5,365,32"/>
-<area shape="rect" id="node7" href="$d6/dc2/rf1a_8c.xhtml#abcff9c644002de49b819433c321f3e82" title="WriteSingleReg" alt="" coords="251,56,365,83"/>
-</map>

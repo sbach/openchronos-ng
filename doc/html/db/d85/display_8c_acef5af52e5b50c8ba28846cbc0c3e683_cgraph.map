@@ -1,4 +1,0 @@
-<map id="lcd_screens_destroy" name="lcd_screens_destroy">
-<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="197,5,336,32"/>
-<area shape="rect" id="node5" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="385,5,479,32"/>
-</map>

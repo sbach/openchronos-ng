@@ -1,5 +1,6 @@
 # Ignore build & configuration files
 /build/
+/doc/
 /config/
 /Dependencies.mk
 /Build.log

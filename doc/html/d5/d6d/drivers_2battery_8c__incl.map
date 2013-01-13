@@ -1,8 +1,0 @@
-<map id="drivers/battery.c" name="drivers/battery.c">
-<area shape="rect" id="node3" href="$d9/d95/openchronos_8h.xhtml" title="Main include file." alt="" coords="65,155,200,181"/>
-<area shape="rect" id="node11" href="$d4/d68/display_8h.xhtml" title="Display driver." alt="" coords="47,80,120,107"/>
-<area shape="rect" id="node14" href="$d6/d69/battery_8h.xhtml" title="Battery sensor header file." alt="" coords="146,80,219,107"/>
-<area shape="rect" id="node17" href="$d2/d54/ports_8h.xhtml" title="ports.h" alt="" coords="243,80,305,107"/>
-<area shape="rect" id="node19" href="$d1/d67/adc12_8h.xhtml" title="ADC12 header file." alt="" coords="330,80,397,107"/>
-<area shape="rect" id="node9" href="$db/d16/config_8h.xhtml" title="config/config.h" alt="" coords="197,229,304,256"/>
-</map>

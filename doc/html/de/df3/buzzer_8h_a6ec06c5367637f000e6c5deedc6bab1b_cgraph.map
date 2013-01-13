@@ -1,4 +1,0 @@
-<map id="buzzer_play" name="buzzer_play">
-<area shape="rect" id="node3" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="147,5,243,32"/>
-<area shape="rect" id="node5" href="$d3/d4c/buzzer_8c.xhtml#a0b5e97d5c00be597d96fd80c6cd1ad56" title="buzzer_stop" alt="" coords="148,56,241,83"/>
-</map>

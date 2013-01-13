@@ -1,5 +1,0 @@
-<map id="edit_hh_set" name="edit_hh_set">
-<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="153,5,247,32"/>
-<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="144,56,256,83"/>
-<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="305,56,415,83"/>
-</map>

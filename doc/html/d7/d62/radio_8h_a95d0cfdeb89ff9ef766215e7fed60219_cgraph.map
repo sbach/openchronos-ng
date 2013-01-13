@@ -1,7 +1,0 @@
-<map id="close_radio" name="close_radio">
-<area shape="rect" id="node3" href="$dd/d16/radio_8c.xhtml#af181029cf06b94f0f4ceaafec1c3f209" title="radio_reset" alt="" coords="159,5,246,32"/>
-<area shape="rect" id="node11" href="$dd/d16/radio_8c.xhtml#a3b62a2ba4f2a38a10ab1f523980b6e40" title="radio_powerdown" alt="" coords="141,56,264,83"/>
-<area shape="rect" id="node5" href="$d6/dc2/rf1a_8c.xhtml#a945d18674a1ebb9b90e50dd79c1b616d" title="Strobe" alt="" coords="313,31,373,57"/>
-<area shape="rect" id="node7" href="$d6/dc2/rf1a_8c.xhtml#a2054867692e5cbdbb05e4e259f9f6638" title="ReadSingleReg" alt="" coords="422,5,535,32"/>
-<area shape="rect" id="node9" href="$d6/dc2/rf1a_8c.xhtml#abcff9c644002de49b819433c321f3e82" title="WriteSingleReg" alt="" coords="422,56,535,83"/>
-</map>

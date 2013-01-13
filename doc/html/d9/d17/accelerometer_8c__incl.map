@@ -1,8 +1,0 @@
-<map id="modules/accelerometer.c" name="modules/accelerometer.c">
-<area shape="rect" id="node3" href="$d9/d95/openchronos_8h.xhtml" title="Main include file." alt="" coords="65,155,200,181"/>
-<area shape="rect" id="node11" href="$d4/d68/display_8h.xhtml" title="Display driver." alt="" coords="75,80,191,107"/>
-<area shape="rect" id="node14" href="$dc/d6b/rtca_8h.xhtml" title="drivers/rtca.h" alt="" coords="216,80,315,107"/>
-<area shape="rect" id="node17" href="$d9/d8e/vti__as_8h.xhtml" title="drivers/vti_as.h" alt="" coords="339,80,449,107"/>
-<area shape="rect" id="node19" href="$de/df3/buzzer_8h.xhtml" title="Buzzer subsystem functions." alt="" coords="475,80,589,107"/>
-<area shape="rect" id="node9" href="$db/d16/config_8h.xhtml" title="config/config.h" alt="" coords="197,229,304,256"/>
-</map>

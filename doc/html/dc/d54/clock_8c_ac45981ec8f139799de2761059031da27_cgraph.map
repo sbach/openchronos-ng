@@ -1,4 +1,0 @@
-<map id="num_pressed" name="num_pressed">
-<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="155,5,293,32"/>
-<area shape="rect" id="node5" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="342,5,437,32"/>
-</map>

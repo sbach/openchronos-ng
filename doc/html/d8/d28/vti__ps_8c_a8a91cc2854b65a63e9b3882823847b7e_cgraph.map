@@ -1,7 +1,0 @@
-<map id="ps_get_pa" name="ps_get_pa">
-<area shape="rect" id="node3" href="$d8/d28/vti__ps_8c.xhtml#aa8c959c733fb193f7db8c74889fc8f01" title="ps_read_register" alt="" coords="137,56,255,83"/>
-<area shape="rect" id="node5" href="$d8/d28/vti__ps_8c.xhtml#a5a111736e7d7fbbed73c189ed1d45b81" title="ps_twi_sda" alt="" coords="308,5,396,32"/>
-<area shape="rect" id="node9" href="$d8/d28/vti__ps_8c.xhtml#a49dfd78503815814186a48488c6a991f" title="ps_twi_write" alt="" coords="305,56,399,83"/>
-<area shape="rect" id="node12" href="$d8/d28/vti__ps_8c.xhtml#acbe3495716ae246bf71d2419dfabed72" title="ps_twi_read" alt="" coords="306,107,398,133"/>
-<area shape="rect" id="node7" href="$d8/d28/vti__ps_8c.xhtml#aeec2d2e61bf0b7d2e9f09c4b4fac4490" title="twi_delay" alt="" coords="448,56,525,83"/>
-</map>

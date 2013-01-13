@@ -1,9 +1,0 @@
-<map id="num_pressed" name="num_pressed">
-<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml#a5aeb07d7031b5d53ca8605bf398714a2" title="Registers a node in the message bus." alt="" coords="162,5,337,32"/>
-<area shape="rect" id="node5" href="$df/dce/alarm_8c.xhtml#aef665620bc5f0e8461604ae0f0891b11" title="alarm_event" alt="" coords="203,56,296,83"/>
-<area shape="rect" id="node7" href="$d2/df2/openchronos_8c.xhtml#a60705ce0564ce52c1977a32cee3215c2" title="Unregisters a node from the message bus." alt="" coords="155,107,343,133"/>
-<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="193,157,305,184"/>
-<area shape="rect" id="node13" href="$d4/d9d/rtca_8c.xhtml#a2b32ba853a3e2aeafb8b9b6903a00ff0" title="rtca_enable_alarm" alt="" coords="185,208,313,235"/>
-<area shape="rect" id="node15" href="$d4/d9d/rtca_8c.xhtml#a9efdfe5536e269e564ccd6705967f851" title="rtca_disable_alarm" alt="" coords="184,259,315,285"/>
-<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="393,157,503,184"/>
-</map>

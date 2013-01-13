@@ -1,8 +1,0 @@
-<map id="alarm_deactivated" name="alarm_deactivated">
-<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="181,31,280,57"/>
-<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="329,5,431,32"/>
-<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="480,56,592,83"/>
-<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="489,5,583,32"/>
-<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="640,5,731,32"/>
-<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="779,31,890,57"/>
-</map>

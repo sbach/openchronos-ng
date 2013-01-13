@@ -1,5 +1,0 @@
-<map id="calculate_otp" name="calculate_otp">
-<area shape="rect" id="node3" href="$d2/dc0/otp_8c.xhtml#af846b96677ffbe8eda903d0d3dfd7298" title="hmac_sha1" alt="" coords="153,5,242,32"/>
-<area shape="rect" id="node5" href="$d2/dc0/otp_8c.xhtml#a09a9a455e41c4bc317d0740ae493f851" title="sha1" alt="" coords="291,5,341,32"/>
-<area shape="rect" id="node7" href="$d2/dc0/otp_8c.xhtml#a2e57aed16fec1a4c71d7a7e449aaff60" title="sha1_transform" alt="" coords="389,5,501,32"/>
-</map>
