@@ -185,7 +185,7 @@ config:
 install: $(OUTDIR)/openchronos.txt
 ifeq ($(method), usb)
 	@echo "Installing the new firmware via USB..."
-	mspdebug rf2500 "prog openchronos.elf"
+	mspdebug rf2500 "prog $(OUTDIR)/openchronos.elf"
 else
 	@echo "Installing the new firmware via RF..."
 	sudo $(PYTHON) contrib/ChronosTool.py rfbsl $<
