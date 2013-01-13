@@ -1,3 +1,7 @@
+#!/usr/bin/env python2
+# encoding: utf-8
+# vim: set ts=4 :
+
 class SortedDict(dict):
     """
     A dictionary that keeps its keys in the order in which they're inserted.

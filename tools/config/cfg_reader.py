@@ -1,9 +1,14 @@
-# vim: ts=4 noexpandtab
+#!/usr/bin/env python2
 # encoding: utf-8
+# vim: set ts=4 :
+
+###################################################################################################
+# cfg_reader.py
+# Tool to read configuration files
+# (C) 2012, Angelo Arrifano <miknix@gmail.com>
+# (C) 2013 Stanislas Bach <stanislasbach@gmail.com>
 #
-#		   Copyright (C) 2012 Angelo Arrifano <miknix@gmail.com>
-#		   Copyright (C) 2013 Stanislas Bach <stanislasbach@gmail.com>
-#
+# *************************************************************************************************
 # This file is part of OpenChronos. This file is free software: you can
 # redistribute it and/or modify it under the terms of the GNU General Public
 # License as published by the Free Software Foundation, version 2.
@@ -16,12 +21,20 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, write to the Free Software Foundation, Inc., 51
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# 
+# *************************************************************************************************
 #
+###################################################################################################
+version = "0.2"
+# Changelog:
+#   0.1 - first version
+#   0.1 - added a function to read system config
+###################################################################################################
 
 import os
 import ConfigParser
 
-#import pprint
+###################################################################################################
 
 def get_modules():
 	mods = os.listdir('modules/')
@@ -60,7 +73,7 @@ def read_modules_config():
 					if default != None:
 						item[key] = default
 
-			# build dependency array from string
+			# Build dependency array from string
 			item['depends'] = filter(None, map(lambda x: x.strip(), item['depends'].split(',')))
 			if sectNr > 0: item['depends'].append( "CONFIG_MOD_%s" % (parent) )
 
@@ -112,12 +125,9 @@ def read_system_config():
 				item['default'] = (item['default'] == 'true' or item['default'] == '1' or item['default'] == 'True')
 		
 		if item.has_key('depends'):		
-			# build dependency array from string
+			# Build dependency array from string
 			item['depends'] = filter(None, map(lambda x: x.strip(), item['depends'].split(',')))
 	
 		DATA.append ( (section,  item) )
-		
-	#pp = pprint.PrettyPrinter(indent=4)
-	#pp.pprint(DATA)
 	
 	return DATA

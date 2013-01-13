@@ -1,6 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# vim: ts=4 noexpandtab
+#!/usr/bin/env python2
+# encoding: utf-8
+# vim: set ts=4 :
 
 import base64
 

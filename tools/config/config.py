@@ -1,22 +1,59 @@
 #!/usr/bin/env python2
 # encoding: utf-8
-# vim: ts=4 noexpandtab
+# vim: set ts=4 :
+
+###################################################################################################
+# config.py
+# Tool to generate the config.h file
+# 
+###################################################################################################
+version = "0.1"
+# Changelog:
+#   0.1 - first version
+###################################################################################################
 
 import urwid
 import urwid.raw_display
 import sys
-
-import re, sys, random
-from lib.sorteddict import SortedDict
+import re
+import random
 
 import cfg_reader
+
 from lib import field_encodings
+from lib.sorteddict import SortedDict
+
+###################################################################################################
 
 DATA = SortedDict()
 WIDMAP = {}
 
+HEADER = """\
+/**
+	@file		config.h
+	@brief		Configuration header file
+	
+	@warning	GENERATED FILE, DO NOT EDIT !
+ */
 
-######################################################
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+// *************************************************************************************************
+// Include section
+
+
+// *************************************************************************************************
+// Defines section
+
+"""
+
+FOOTER = """
+
+#endif /* __CONFIG_H__ */
+"""
+
+###################################################################################################
 
 # Generate System config
 for key,field in cfg_reader.read_system_config():
@@ -32,19 +69,7 @@ DATA["TEXT_MODULES"] = {
 for key,field in cfg_reader.read_modules_config():
 	DATA[key] = field
 
-######################################################
-
-
-
-HEADER = """
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
-
-"""
-
-FOOTER = """
-#endif // _CONFIG_H_
-"""
+###################################################################################################
 
 class HelpListWalker(urwid.SimpleListWalker):
 	def __init__(self, app, *args, **kwargs):
@@ -101,6 +126,8 @@ def widget_changed_callback(wid, state):
 			continue
 		widget_changed_callback(depwid, val)
 
+###################################################################################################
+
 class CheckBoxWidget(urwid.CheckBox):
 	def __init__(self, *args, **kwargs):
 		self._selectable = True
@@ -108,6 +135,8 @@ class CheckBoxWidget(urwid.CheckBox):
 
 	def selectable(self):
 		return self._selectable
+
+###################################################################################################
 
 class EditWidget(urwid.Edit):
 	def __init__(self, *args, **kwargs):
@@ -117,7 +146,9 @@ class EditWidget(urwid.Edit):
 	def selectable(self):
 		return self._selectable
 
-class OpenChronosApp(object):
+###################################################################################################
+
+class OpenChronosConfigApp(object):
 	def main(self):
 		global DATA
 
@@ -192,8 +223,10 @@ class OpenChronosApp(object):
 			wid._datakey = key
 			wid._datafield = field
 			f = urwid.AttrWrap(wid, 'opt','optsel')
+			
 			if field.has_key('ischild') and field['ischild']:
 				f = urwid.Padding(f, width=77, left=3)
+			
 			f._widget = wid
 			WIDMAP[key] = f
 			self.list_content.append(f)
@@ -204,8 +237,10 @@ class OpenChronosApp(object):
 			wid._datakey = key
 			wid._datafield = field
 			f = urwid.AttrWrap(wid, 'opt', 'optsel')
+			
 			if field.has_key('ischild') and field['ischild']:
 				f = urwid.Padding(f, width=77, left=3)
+
 			f._widget = wid
 			WIDMAP[key] = f
 			self.list_content.append(f)
@@ -237,18 +272,24 @@ class OpenChronosApp(object):
 				DATA[key]["value"] = wid.get_state()
 
 		fp = open("config/config.h", "w")
-		fp.write("// !!!! DO NOT EDIT !!!, use: make config\n")
+
 		fp.write(HEADER)
+
 		for key,dat in DATA.iteritems():
+			
 			if not "value" in dat:
 				continue
+			
 			if "type" in dat and dat["type"] == "info":
 				continue
+			
 			if "encoding" in dat:
 				fun = getattr(field_encodings, dat['encoding'])
 				dat["value"] = fun(dat["value"], True)
+			
 			if DATA[key].get("ifndef", False):
 				fp.write("#ifndef %s\n" %key)
+			
 			if isinstance(dat["value"], bool):
 				if dat["value"]:
 					fp.write("#define %s\n" %key)
@@ -256,8 +297,10 @@ class OpenChronosApp(object):
 					fp.write("// %s is not set\n" %key)
 			else:
 				fp.write("#define %s %s\n" %(key, dat["value"]))
+			
 			if DATA[key].get("ifndef", False):
 				fp.write("#endif // %s\n" %key)
+
 		fp.write(FOOTER)
 
 
@@ -274,8 +317,10 @@ class OpenChronosApp(object):
 		except (OSError, IOError):
 			set_default()
 			return
+		
 		match = re.compile('^[\t ]*#[\t ]*define[\t ]+([a-zA-Z0-9_]+)[\t ]*(.*)$')
 		match2 = re.compile('^// ([a-zA-Z0-9_]+) is not set$')
+
 		for line in fp:
 			m = match.search(line)
 			if m:
@@ -301,8 +346,12 @@ class OpenChronosApp(object):
 
 		set_default()
 
+###################################################################################################
+# Main
+
 if __name__ == "__main__":
-	App = OpenChronosApp()
+
+	App = OpenChronosConfigApp()
 	App.load_config()
 	App.main()
 	App.save_config()
