@@ -36,7 +36,7 @@
 // *************************************************************************************************
 
 // system
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 // driver
 #include "rf1a.h"

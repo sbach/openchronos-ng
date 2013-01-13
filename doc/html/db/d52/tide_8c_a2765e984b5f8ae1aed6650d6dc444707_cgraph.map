@@ -1,0 +1,13 @@
+<map id="endEditing" name="endEditing">
+<area shape="rect" id="node3" href="$db/d52/tide_8c.xhtml#ab6741cd0eea258802916a855f36f8e55" title="timeInMinutes" alt="" coords="457,25,561,52"/>
+<area shape="rect" id="node5" href="$db/d52/tide_8c.xhtml#adcd9a1bde3289e795b11fdcf0276aead" title="timeNowInMinutes" alt="" coords="275,25,405,52"/>
+<area shape="rect" id="node8" href="$db/d52/tide_8c.xhtml#aa8fd833b89760ca87a163163aae14187" title="timeFromMinutes" alt="" coords="279,76,401,102"/>
+<area shape="rect" id="node10" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="291,329,389,356"/>
+<area shape="rect" id="node23" href="$db/d52/tide_8c.xhtml#add9c243943294a693b79fd92d6cfc99c" title="drawScreen" alt="" coords="136,152,227,178"/>
+<area shape="rect" id="node12" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="458,278,561,305"/>
+<area shape="rect" id="node20" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="453,228,565,254"/>
+<area shape="rect" id="node14" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="614,278,709,305"/>
+<area shape="rect" id="node16" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="757,278,848,305"/>
+<area shape="rect" id="node18" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="897,253,1007,280"/>
+<area shape="rect" id="node30" href="$db/d52/tide_8c.xhtml#ac19d24cc6cc0121e720da442159a050e" title="blinkCol" alt="" coords="305,177,375,204"/>
+</map>

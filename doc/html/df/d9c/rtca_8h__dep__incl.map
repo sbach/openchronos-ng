@@ -1,0 +1,9 @@
+<map id="drivers/rtca.h" name="drivers/rtca.h">
+<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml" title="Main loop &amp; user interface." alt="" coords="5,80,140,107"/>
+<area shape="rect" id="node5" href="$d4/d9d/rtca_8c.xhtml" title="drivers/rtca.c" alt="" coords="165,80,264,107"/>
+<area shape="rect" id="node7" href="$d1/d2d/accelerometer_8c.xhtml" title="modules/accelerometer.c" alt="" coords="288,80,456,107"/>
+<area shape="rect" id="node9" href="$df/dce/alarm_8c.xhtml" title="modules/alarm.c" alt="" coords="481,80,599,107"/>
+<area shape="rect" id="node11" href="$dc/d54/clock_8c.xhtml" title="modules/clock.c" alt="" coords="623,80,739,107"/>
+<area shape="rect" id="node13" href="$d2/dc0/otp_8c.xhtml" title="modules/otp.c" alt="" coords="764,80,868,107"/>
+<area shape="rect" id="node15" href="$db/d52/tide_8c.xhtml" title="modules/tide.c" alt="" coords="892,80,999,107"/>
+</map>

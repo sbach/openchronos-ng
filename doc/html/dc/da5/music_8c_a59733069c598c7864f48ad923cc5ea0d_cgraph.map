@@ -1,0 +1,5 @@
+<map id="num_press" name="num_press">
+<area shape="rect" id="node3" href="$d3/d4c/buzzer_8c.xhtml#a6ec06c5367637f000e6c5deedc6bab1b" title="Play a sequence of notes using the buzzer." alt="" coords="142,31,234,57"/>
+<area shape="rect" id="node5" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="283,5,379,32"/>
+<area shape="rect" id="node7" href="$d3/d4c/buzzer_8c.xhtml#a0b5e97d5c00be597d96fd80c6cd1ad56" title="buzzer_stop" alt="" coords="284,56,377,83"/>
+</map>

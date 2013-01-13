@@ -20,7 +20,7 @@
  */
 
 
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 #include <drivers/display.h>
 #include <drivers/buzzer.h>

@@ -1,0 +1,6 @@
+<map id="battery_measurement" name="battery_measurement">
+<area shape="rect" id="node3" href="$dc/ddc/adc12_8c.xhtml#a6202d56d811a4a15e9675420b4b1f8db" title="Init ADC12. Do single conversion. Turn off ADC12." alt="" coords="203,5,371,32"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="231,56,343,83"/>
+<area shape="rect" id="node5" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="427,5,523,32"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="419,56,530,83"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="acc_deactivated" name="acc_deactivated">
+<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#acef5af52e5b50c8ba28846cbc0c3e683" title="Destroys all virtual screen." alt="" coords="194,39,337,65"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="428,368,527,395"/>
+<area shape="rect" id="node22" href="$d2/df2/openchronos_8c.xhtml#a60705ce0564ce52c1977a32cee3215c2" title="Unregisters a node from the message bus." alt="" coords="171,260,359,287"/>
+<area shape="rect" id="node24" href="$d1/d2d/accelerometer_8c.xhtml#afbcf13abd555b9a4a97848c75f4a0479" title="as_event" alt="" coords="228,159,303,185"/>
+<area shape="rect" id="node26" href="$d9/d8e/vti__as_8h.xhtml#a73481abbeea9355be57fe38b57a79a12" title="as_stop" alt="" coords="443,64,511,91"/>
+<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="408,13,547,40"/>
+<area shape="rect" id="node7" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="613,5,707,32"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="609,325,711,352"/>
+<area shape="rect" id="node19" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="604,376,716,403"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="774,325,869,352"/>
+<area shape="rect" id="node15" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="917,325,1008,352"/>
+<area shape="rect" id="node17" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="1057,351,1167,377"/>
+<area shape="rect" id="node28" href="$d9/d8e/vti__as_8h.xhtml#ab8f3382742af6bc6d4100cb2ff3503ee" title="as_get_status" alt="" coords="425,317,529,344"/>
+<area shape="rect" id="node30" href="$d3/d4c/buzzer_8c.xhtml#a6ec06c5367637f000e6c5deedc6bab1b" title="Play a sequence of notes using the buzzer." alt="" coords="431,115,523,141"/>
+<area shape="rect" id="node36" href="$d9/d8e/vti__as_8h.xhtml#ae20bbb28e4b58198a517f379b7920a3b" title="as_get_data" alt="" coords="431,165,524,192"/>
+<area shape="rect" id="node39" href="$d1/d2d/accelerometer_8c.xhtml#a395794d1c6c3446e651f1d8751308121" title="display_data" alt="" coords="430,216,525,243"/>
+<area shape="rect" id="node48" href="$d9/d8e/vti__as_8h.xhtml#a09ea2bd655c59ec47643c5a7a25da589" title="as_read_register" alt="" coords="418,267,537,293"/>
+<area shape="rect" id="node32" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="612,107,708,133"/>
+<area shape="rect" id="node34" href="$d3/d4c/buzzer_8c.xhtml#a0b5e97d5c00be597d96fd80c6cd1ad56" title="buzzer_stop" alt="" coords="613,56,707,83"/>
+<area shape="rect" id="node43" href="$db/d85/display_8c.xhtml#a9047d98cd15ffbc79e15c63fca36d70b" title="pseudo sprintf function" alt="" coords="627,275,693,301"/>
+<area shape="rect" id="node45" href="$d1/d2d/accelerometer_8c.xhtml#ada05d6860a0eb4054d6aab60f359317c" title="acceleration_value\l_is_positive" alt="" coords="595,158,725,199"/>
+</map>

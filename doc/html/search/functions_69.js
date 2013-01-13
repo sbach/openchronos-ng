@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['increment_5flap_5fstopwatch',['increment_lap_stopwatch',['../de/dd1/stopwatch_8c.xhtml#aa0ed77a7ae91fdf019637f338a035bbc',1,'stopwatch.c']]],
+  ['infomem_5fapp_5famount',['infomem_app_amount',['../dd/d56/infomem_8h.xhtml#a83a488a4c36c1880a4aea99d092c44f2',1,'infomem.h']]],
+  ['infomem_5fapp_5fclear',['infomem_app_clear',['../dd/d56/infomem_8h.xhtml#aa6ff67a20edcc92431a5aa4dc2f216d0',1,'infomem.h']]],
+  ['infomem_5fapp_5fdelete',['infomem_app_delete',['../dd/d56/infomem_8h.xhtml#a10513db69f2ca0bb070109ff3efe0793',1,'infomem.h']]],
+  ['infomem_5fapp_5fmodify',['infomem_app_modify',['../dd/d56/infomem_8h.xhtml#a6f857a7e14e5552543e400a3ef29a881',1,'infomem.h']]],
+  ['infomem_5fapp_5fread',['infomem_app_read',['../dd/d56/infomem_8h.xhtml#ac51843f3df9a2c998c3f00d3600eaa87',1,'infomem.h']]],
+  ['infomem_5fapp_5freplace',['infomem_app_replace',['../dd/d56/infomem_8h.xhtml#a0186e6ebedb0b0dfa00a9108d96f8a8f',1,'infomem.h']]],
+  ['infomem_5fdelete_5fall',['infomem_delete_all',['../dd/d56/infomem_8h.xhtml#a3f6d422487c83011680e238ea5643548',1,'infomem.h']]],
+  ['infomem_5finit',['infomem_init',['../dd/d56/infomem_8h.xhtml#aeccfbbd0a5448533a66806093bc60a73',1,'infomem.h']]],
+  ['infomem_5fready',['infomem_ready',['../dd/d56/infomem_8h.xhtml#a2435efc5f177570c5fb17f46ebcba19a',1,'infomem.h']]],
+  ['infomem_5frelocate',['infomem_relocate',['../dd/d56/infomem_8h.xhtml#a50bda76e898a588ad64e488338a23c9f',1,'infomem.h']]],
+  ['infomem_5fspace',['infomem_space',['../dd/d56/infomem_8h.xhtml#a0b5d1261c7612c4f34f270771e74eb1c',1,'infomem.h']]],
+  ['init_5fapplication',['init_application',['../d2/df2/openchronos_8c.xhtml#ab3764c8c03dce7872af06f54001d3fbf',1,'openchronos.c']]],
+  ['init_5fbuttons',['init_buttons',['../d0/d6e/ports_8c.xhtml#afe0b498404852847e48c5539c4d651e8',1,'init_buttons(void):&#160;ports.c'],['../d2/d54/ports_8h.xhtml#afe0b498404852847e48c5539c4d651e8',1,'init_buttons(void):&#160;ports.c']]],
+  ['init_5fpressure_5ftable',['init_pressure_table',['../d8/d28/vti__ps_8c.xhtml#a50a7aa70325a8986593edcd295ca9c44',1,'init_pressure_table(void):&#160;vti_ps.c'],['../de/dfc/vti__ps_8h.xhtml#a50a7aa70325a8986593edcd295ca9c44',1,'init_pressure_table(void):&#160;vti_ps.c']]],
+  ['is_5facceleration_5fmeasurement',['is_acceleration_measurement',['../d1/d2d/accelerometer_8c.xhtml#a6ec1caca61a5889686f98f471160bccd',1,'accelerometer.c']]]
+];

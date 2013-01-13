@@ -1,0 +1,51 @@
+<map id="main" name="main">
+<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml#ab3764c8c03dce7872af06f54001d3fbf" title="Init the watch&#39;s program." alt="" coords="105,385,213,412"/>
+<area shape="rect" id="node56" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="504,841,603,868"/>
+<area shape="rect" id="node66" href="$d3/d5f/modinit_8c.xhtml#a4707d33e566543822e7de1dfb0aa0f42" title="mod_init" alt="" coords="123,1272,194,1299"/>
+<area shape="rect" id="node102" href="$d2/df2/openchronos_8c.xhtml#abbfcc29de062bbcf8c290b4c94f0fced" title="Check for events and notify the listener." alt="" coords="107,791,210,817"/>
+<area shape="rect" id="node108" href="$d2/df2/openchronos_8c.xhtml#ab415bf22cd66737551a5a8fca0002aa4" title="Check for buttons and launch the proper routines." alt="" coords="105,917,212,944"/>
+<area shape="rect" id="node5" href="$d7/ddc/pmm_8c.xhtml#a25b43049d6d27cc647667ba87a4c584f" title="Set the VCore to a new level." alt="" coords="302,157,381,184"/>
+<area shape="rect" id="node11" href="$d4/d9d/rtca_8c.xhtml#a07d907c6412341bb72934f6eb735a6c0" title="rtca_init" alt="" coords="307,208,375,235"/>
+<area shape="rect" id="node15" href="$dd/d16/radio_8c.xhtml#af181029cf06b94f0f4ceaafec1c3f209" title="radio_reset" alt="" coords="298,259,385,285"/>
+<area shape="rect" id="node19" href="$dd/d16/radio_8c.xhtml#a3b62a2ba4f2a38a10ab1f523980b6e40" title="radio_powerdown" alt="" coords="280,309,403,336"/>
+<area shape="rect" id="node22" href="$d9/d8e/vti__as_8h.xhtml#a4164ccb278788e063b953efc19e6c296" title="as_init" alt="" coords="311,360,371,387"/>
+<area shape="rect" id="node24" href="$d9/dc8/vti__as_8c.xhtml#a0e2d0e77c4d1ea89567e5c87e0ad84c8" title="as_disconnect" alt="" coords="288,411,395,437"/>
+<area shape="rect" id="node26" href="$db/d85/display_8c.xhtml#a6842775ba83d166f02b8fef8bb63b1e6" title="Initializes the display." alt="" coords="310,461,373,488"/>
+<area shape="rect" id="node28" href="$d0/d6e/ports_8c.xhtml#afe0b498404852847e48c5539c4d651e8" title="init_buttons" alt="" coords="297,512,386,539"/>
+<area shape="rect" id="node30" href="$df/d41/timer_8c.xhtml#a99ccbea44caa7d91c17782c602f956ef" title="Initializes the timer." alt="" coords="300,563,383,589"/>
+<area shape="rect" id="node32" href="$d3/d4c/buzzer_8c.xhtml#a0cead532fdd0c0de5fa1c1de0f6556bd" title="Initialize buzzer subsystem." alt="" coords="299,613,384,640"/>
+<area shape="rect" id="node38" href="$d8/d28/vti__ps_8c.xhtml#a27033e0380e7cf7cfb37df8bf6d16ff1" title="ps_init" alt="" coords="311,664,371,691"/>
+<area shape="rect" id="node45" href="$de/dd8/drivers_2battery_8c.xhtml#a4040594754914d4c0fbd49cfc851484b" title="Init the battery measurement." alt="" coords="298,5,385,32"/>
+<area shape="rect" id="node47" href="$d8/dd8/drivers_2temperature_8c.xhtml#a7da890f6748bbeb05511fd20100cb6ef" title="temperature_init" alt="" coords="284,727,399,753"/>
+<area shape="rect" id="node52" href="$dd/d56/infomem_8h.xhtml#a2435efc5f177570c5fb17f46ebcba19a" title="infomem_ready" alt="" coords="286,56,397,83"/>
+<area shape="rect" id="node54" href="$dd/d56/infomem_8h.xhtml#aeccfbbd0a5448533a66806093bc60a73" title="infomem_init" alt="" coords="293,107,389,133"/>
+<area shape="rect" id="node7" href="$d7/ddc/pmm_8c.xhtml#a6f01d523327c4eec214ae3470c215c3d" title="Set the VCore to a new higher level." alt="" coords="505,157,601,184"/>
+<area shape="rect" id="node9" href="$d7/ddc/pmm_8c.xhtml#a292f9802ca1c82b679f7528de2ee55b8" title="Set the VCore to a new Lower level." alt="" coords="497,107,610,133"/>
+<area shape="rect" id="node13" href="$d4/d53/rtc__dst_8h.xhtml#a01c4fb4d7797847aa4c70b3f47c725b0" title="rtc_dst_init" alt="" coords="510,208,597,235"/>
+<area shape="rect" id="node17" href="$d6/dc2/rf1a_8c.xhtml#a945d18674a1ebb9b90e50dd79c1b616d" title="Strobe" alt="" coords="523,284,583,311"/>
+<area shape="rect" id="node34" href="$d3/d4c/buzzer_8c.xhtml#a6ec06c5367637f000e6c5deedc6bab1b" title="Play a sequence of notes using the buzzer." alt="" coords="507,537,599,564"/>
+<area shape="rect" id="node36" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="693,588,789,615"/>
+<area shape="rect" id="node41" href="$d8/d28/vti__ps_8c.xhtml#af2ab66da002d7051cd8e27b63bb04d06" title="ps_write_register" alt="" coords="493,639,614,665"/>
+<area shape="rect" id="node43" href="$d8/d28/vti__ps_8c.xhtml#aa8c959c733fb193f7db8c74889fc8f01" title="ps_read_register" alt="" coords="494,689,613,716"/>
+<area shape="rect" id="node49" href="$dc/ddc/adc12_8c.xhtml#a6202d56d811a4a15e9675420b4b1f8db" title="Init ADC12. Do single conversion. Turn off ADC12." alt="" coords="469,740,637,767"/>
+<area shape="rect" id="node58" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="690,943,793,969"/>
+<area shape="rect" id="node62" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="685,867,797,893"/>
+<area shape="rect" id="node60" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="854,943,949,969"/>
+<area shape="rect" id="node64" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="846,867,957,893"/>
+<area shape="rect" id="node68" href="$dd/d09/altitude_8c.xhtml#af17950fb2b8549494962ccffd874b104" title="mod_altitude_init" alt="" coords="281,1095,401,1121"/>
+<area shape="rect" id="node72" href="$d1/d2d/accelerometer_8c.xhtml#a935d2914ac0f3729715bab1080fee1de" title="mod_accelerometer_init" alt="" coords="261,1145,421,1172"/>
+<area shape="rect" id="node75" href="$dc/d54/clock_8c.xhtml#aec36ff5afe17ee2779e0b0e24aab9ca7" title="mod_clock_init" alt="" coords="287,1196,396,1223"/>
+<area shape="rect" id="node78" href="$de/dd1/stopwatch_8c.xhtml#a86ff27baec4e95765c90fcdb8e1bfd8a" title="mod_stopwatch_init" alt="" coords="272,1247,411,1273"/>
+<area shape="rect" id="node81" href="$dc/da5/music_8c.xhtml#ae61e95ab46384b973f91f6575ed64938" title="mod_music_init" alt="" coords="285,1297,398,1324"/>
+<area shape="rect" id="node84" href="$df/dce/alarm_8c.xhtml#ab61f42df97d34533cf86aa88b1f0f798" title="mod_alarm_init" alt="" coords="286,1348,397,1375"/>
+<area shape="rect" id="node87" href="$db/d52/tide_8c.xhtml#a19a6ff01d787085346bfd8d2a34c1895" title="mod_tide_init" alt="" coords="292,1399,391,1425"/>
+<area shape="rect" id="node90" href="$d1/dc6/rfbsl_8c.xhtml#abf8d611962ed519d0a991d94247548fe" title="mod_rfbsl_init" alt="" coords="290,1449,393,1476"/>
+<area shape="rect" id="node93" href="$db/d97/modules_2temperature_8c.xhtml#aea3710888164f63973db2bc6b75bad7e" title="Init the module. Sets default values, register menu entry." alt="" coords="268,1500,415,1527"/>
+<area shape="rect" id="node96" href="$d2/dc0/otp_8c.xhtml#ae4086bef84911baaf471b853ee9e0842" title="mod_otp_init" alt="" coords="293,1551,389,1577"/>
+<area shape="rect" id="node99" href="$d8/d7f/modules_2battery_8c.xhtml#aee7c098de30dddd4547509b803e1a8bb" title="mod_battery_init" alt="" coords="282,1044,401,1071"/>
+<area shape="rect" id="node70" href="$d2/df2/openchronos_8c.xhtml#a71490cfda7ca71ac20d681a8a7a994e1" title="Adds an entry to the main menu." alt="" coords="494,1297,613,1324"/>
+<area shape="rect" id="node104" href="$de/dd8/drivers_2battery_8c.xhtml#a44023812078341ee670c9e845118b7ef" title="Measure the battery voltage." alt="" coords="267,791,415,817"/>
+<area shape="rect" id="node110" href="$d2/df2/openchronos_8c.xhtml#a0d53f4046dbc5f7accb6aea8f57c1693" title="Edit mode routine." alt="" coords="279,993,403,1020"/>
+<area shape="rect" id="node112" href="$d2/df2/openchronos_8c.xhtml#afcc62ec75aca4750a7b512e6012c1759" title="Menu mode routine." alt="" coords="274,892,409,919"/>
+<area shape="rect" id="node117" href="$d2/df2/openchronos_8c.xhtml#a956465889f08332565c9a2e13d7cd36a" title="Menu mode activation." alt="" coords="488,993,619,1020"/>
+</map>

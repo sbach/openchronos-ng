@@ -1,17 +1,11 @@
-doc
-modinit.c
-drivers/rtca_now.h
-openchronos.txt
-openchronos.elf
-openchronos.dep
-openchronos.cflags
-*.[oa]
-*.pyc
-*.*~
-*.s
-*.swp
-config.h
-.pida-metadata
-TAGS
-output.map
-cscope.out
+# Ignore build & configuration files
+/build/
+/config/
+/Dependencies.mk
+/Build.log
+
+# Object files
+*.o
+
+# Linux ~ files
+*~

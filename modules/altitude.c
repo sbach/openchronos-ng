@@ -57,7 +57,7 @@
 // Include section
 
 // System
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 // Driver
 #include <drivers/display.h>
@@ -115,23 +115,41 @@ void altitude_measurement(void)
 	
 #ifdef CONFIG_FIXEDPOINT_MATH
 	altitude.altitude = conv_pa_to_altitude(altitude.pressure, altitude.temperature);
+	// FIXME Not working properly when using update_pa_table()
 #else
 	altitude.altitude = conv_pa_to_meter(altitude.pressure, altitude.temperature);
 #endif
 
-#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_FT
-	// TODO Convert altitude.altitude to ft
-#endif
-
-#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_BOTH
-	if(display_altitude_metric == ALTITUDE_METRIC_FT)
-	{
-		// TODO Convert altitude.altitude to ft
-	}
-#endif
-
 }
 
+void altitude_reconfigure()
+{
+	// Stop the sensor
+	ps_stop();
+		
+	// Apply calibration offset and recalculate pressure table
+	
+	int16_t alt = altitude.altitude;
+	alt += altitude.altitude_offset;
+
+	update_pressure_table(alt, altitude.pressure, altitude.temperature);
+	
+	//Restart the sensor when calibration is done
+	ps_start();
+}
+
+#if CONFIG_MOD_ALTITUDE_METRIC != ALTITUDE_METRIC_M
+// *************************************************************************************************
+// @fn          conv_m_to_ft
+// @brief       Convert meters to feet
+// @param       u16 m		Meters
+// @return      u16		Feet
+// *************************************************************************************************
+int16_t convert_m_to_ft(int16_t m)
+{
+	return (((int16_t)328*m)/100);
+}
+#endif
 
 // *************************************************************************************************
 // @fn          display_alt_symbols
@@ -140,8 +158,13 @@ void altitude_measurement(void)
 // *************************************************************************************************
 void display_alt_symbols(int8_t disp)
 {
-	display_symbol(0,LCD_UNIT_L1_FT, (disp && display_altitude_metric == ALTITUDE_METRIC_M)  ? SEG_ON : SEG_OFF);
-	display_symbol(0,LCD_UNIT_L1_M, (disp && display_altitude_metric == ALTITUDE_METRIC_FT) ? SEG_ON : SEG_OFF);
+	display_symbol(0, LCD_UNIT_L1_FT, 
+		(disp && display_altitude_metric == ALTITUDE_METRIC_FT)  ? SEG_ON : SEG_OFF
+	);
+	
+	display_symbol(0, LCD_UNIT_L1_M,
+		(disp && display_altitude_metric == ALTITUDE_METRIC_M) ? SEG_ON : SEG_OFF
+	);
 }
 
 
@@ -152,7 +175,22 @@ void display_alt_symbols(int8_t disp)
 // *************************************************************************************************
 void display_altitude()
 {
-	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude), SEG_SET);
+	int16_t alt = altitude.altitude;
+		
+#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_FT
+	// Convert from meters to feet
+	alt = convert_m_to_ft(alt);
+#endif
+
+#if CONFIG_MOD_ALTITUDE_METRIC == ALTITUDE_METRIC_BOTH
+	if(display_altitude_metric == ALTITUDE_METRIC_FT)
+	{
+ 		// Convert from meters to feet
+		alt = convert_m_to_ft(alt);
+	}
+#endif
+
+	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", alt), SEG_SET);
 }
 
 
@@ -164,7 +202,7 @@ static void edit_offset_sel(void)
 	display_chars(1, LCD_SEG_L2_3_0, "OFST", SEG_SET);
 	
 	// Display the current offset
-	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude + altitude.altitude_offset), SEG_SET); //FIXME
+	display_chars(1, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude + altitude.altitude_offset), SEG_SET); //FIXME
 }
 
 static void edit_offset_dsel(void)
@@ -178,7 +216,8 @@ static void edit_offset_set(int8_t step)
 	altitude.altitude_offset += step * 10;
 	
 	// Display the current offset
-	display_chars(0, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude + altitude.altitude_offset), SEG_SET); //FIXME
+	display_chars(1, LCD_SEG_L1_3_0, _sprintf("%3s", altitude.altitude + altitude.altitude_offset), SEG_SET); //FIXME
+
 }
 
 // *************************************************************************************************
@@ -219,7 +258,7 @@ static void edit_metric_set(int8_t step)
 // *************************************************************************************************
 static void edit_save()
 {
-	need_reconfigure = 1;
+	altitude_reconfigure();
 	
 	// Disable blinking for the offset value
 	display_chars(1, LCD_SEG_L1_3_0, NULL, BLINK_OFF);
@@ -241,15 +280,7 @@ static void ps_event(enum sys_message msg)
 	// Get the altitude from the sensor
 	altitude_measurement();
 	
-	// Reconfigure the sensor if needed
-	if (need_reconfigure)
-	{
-		// Apply calibration offset and recalculate pressure table
-		altitude.altitude += altitude.altitude_offset;
-		update_pressure_table(altitude.altitude, altitude.pressure, altitude.temperature);
-	
-		need_reconfigure = 0;
-	}
+	// altitude_reconfigure();
 	
 	// Display new stuff on the screen
 	display_altitude();
@@ -292,7 +323,7 @@ static void altitude_edit(void)
 // *************************************************************************************************
 static void altitude_activate()
 {
-	need_reconfigure = 1;
+	//need_reconfigure = 1;
 
 	// Create two screens, the first is always the active one
 	lcd_screens_create(2);

@@ -1,3 +1,8 @@
+/**
+	@file	drivers/adc12.h
+	@brief	ADC12 header file
+ */
+
 // *************************************************************************************************
 //
 //	Copyright (C) 2009 Texas Instruments Incorporated - http://www.ti.com/
@@ -33,39 +38,39 @@
 //
 // *************************************************************************************************
 
-#ifndef ADC12_H_
-#define ADC12_H_
-
-#include <openchronos.h>
+#ifndef __ADC12_H__
+#define __ADC12_H__
 
 // *************************************************************************************************
 // Include section
 
+#include <core/openchronos.h>
 
-// *************************************************************************************************
-// Prototypes section
-extern uint16_t adc12_single_conversion(uint16_t ref, uint16_t sht, uint16_t channel);
 
 // *************************************************************************************************
 // Defines section
 
-//// Reference settling time
+///// Reference settling time
 //#define ADC12_REFERENCE_SETTLING_TIME_USEC		(4*34u)
-//
-//// Delay for temperature measurement
+
+///// Delay for temperature measurement
 //#define ADC12_TEMP_CONVERSION_TIME_USEC			(10*34u)
-//
-//// Delay for battery voltage measurement
+
+///// Delay for battery voltage measurement
 //#define ADC12_BATT_CONVERSION_TIME_USEC			(10*34u)
 
 
 // *************************************************************************************************
 // Global Variable section
+
 extern uint16_t adc12_result;
 extern uint8_t  adc12_data_ready;
 
 
 // *************************************************************************************************
-// Extern section
+// Prototypes section
 
-#endif /*ADC12_H_*/
+extern uint16_t adc12_single_conversion(uint16_t ref, uint16_t sht, uint16_t channel);
+
+
+#endif /* __ADC12_H__*/

@@ -1,0 +1,10 @@
+<map id="drivers/timer.h" name="drivers/timer.h">
+<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml" title="Main loop &amp; user interface." alt="" coords="5,80,140,107"/>
+<area shape="rect" id="node5" href="$dc/ddc/adc12_8c.xhtml" title="ADC12 functions." alt="" coords="166,80,276,107"/>
+<area shape="rect" id="node7" href="$d3/d4c/buzzer_8c.xhtml" title="drivers/buzzer.c" alt="" coords="301,80,416,107"/>
+<area shape="rect" id="node9" href="$d0/d6e/ports_8c.xhtml" title="drivers/ports.c" alt="" coords="441,80,545,107"/>
+<area shape="rect" id="node11" href="$d8/dd8/drivers_2temperature_8c.xhtml" title="drivers/temperature.c" alt="" coords="570,80,715,107"/>
+<area shape="rect" id="node13" href="$df/d41/timer_8c.xhtml" title="drivers/timer.c" alt="" coords="739,80,844,107"/>
+<area shape="rect" id="node15" href="$d9/dc8/vti__as_8c.xhtml" title="drivers/vti_as.c" alt="" coords="869,80,979,107"/>
+<area shape="rect" id="node17" href="$d8/d28/vti__ps_8c.xhtml" title="drivers/vti_ps.c" alt="" coords="1003,80,1113,107"/>
+</map>

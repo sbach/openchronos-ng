@@ -1,0 +1,9 @@
+<map id="battery_event" name="battery_event">
+<area shape="rect" id="node3" href="$d8/d7f/modules_2battery_8c.xhtml#ad4bcad30f03f9e6172885b718fd7cce3" title="display_battery" alt="" coords="155,31,266,57"/>
+<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="315,5,418,32"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#aa537e9d11d9d4e32a82dc123616c68b2" title="Converts an integer from a range into a percent string between 0 and 100." alt="" coords="336,56,397,83"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="467,5,562,32"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="611,5,701,32"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="750,5,861,32"/>
+<area shape="rect" id="node15" href="$db/d85/display_8c.xhtml#a9047d98cd15ffbc79e15c63fca36d70b" title="pseudo sprintf function" alt="" coords="482,56,547,83"/>
+</map>

@@ -39,7 +39,7 @@
  *		- (both-arrows) --- noop
  */
 
-#include <openchronos.h>
+#include <core/openchronos.h>
 /* driver */
 #include <drivers/display.h>
 

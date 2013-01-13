@@ -1,0 +1,7 @@
+<map id="check_events" name="check_events">
+<area shape="rect" id="node3" href="$de/dd8/drivers_2battery_8c.xhtml#a44023812078341ee670c9e845118b7ef" title="Measure the battery voltage." alt="" coords="158,31,306,57"/>
+<area shape="rect" id="node5" href="$dc/ddc/adc12_8c.xhtml#a6202d56d811a4a15e9675420b4b1f8db" title="Init ADC12. Do single conversion. Turn off ADC12." alt="" coords="355,5,523,32"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="383,56,495,83"/>
+<area shape="rect" id="node7" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="579,5,675,32"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="571,56,682,83"/>
+</map>

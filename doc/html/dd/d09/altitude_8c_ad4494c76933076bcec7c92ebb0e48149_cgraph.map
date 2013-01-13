@@ -1,0 +1,25 @@
+<map id="altitude_deactivate" name="altitude_deactivate">
+<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml#a60705ce0564ce52c1977a32cee3215c2" title="Unregisters a node from the message bus." alt="" coords="185,107,373,133"/>
+<area shape="rect" id="node5" href="$dd/d09/altitude_8c.xhtml#ae3db0e1669bd567ba9e53c0d97218039" title="ps_event" alt="" coords="241,157,316,184"/>
+<area shape="rect" id="node40" href="$d8/d28/vti__ps_8c.xhtml#a58b7096908222f24db9c85082d3e5f3d" title="ps_stop" alt="" coords="653,208,721,235"/>
+<area shape="rect" id="node48" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="229,259,328,285"/>
+<area shape="rect" id="node54" href="$dd/d09/altitude_8c.xhtml#a2b70e51410666081d87354770f15521e" title="display_alt_symbols" alt="" coords="209,309,349,336"/>
+<area shape="rect" id="node7" href="$dd/d09/altitude_8c.xhtml#a4884d6d29145a48a4bbf98acfb0a888f" title="altitude_measurement" alt="" coords="422,81,573,108"/>
+<area shape="rect" id="node28" href="$dd/d09/altitude_8c.xhtml#a50710235162aa8e09c6a46ccc2e69927" title="display_altitude" alt="" coords="441,157,553,184"/>
+<area shape="rect" id="node9" href="$d8/d28/vti__ps_8c.xhtml#a9ede906177cc352bf1779ad77b31adfd" title="ps_get_temp" alt="" coords="638,56,735,83"/>
+<area shape="rect" id="node23" href="$d8/d28/vti__ps_8c.xhtml#a8a91cc2854b65a63e9b3882823847b7e" title="ps_get_pa" alt="" coords="645,5,728,32"/>
+<area shape="rect" id="node26" href="$d8/d28/vti__ps_8c.xhtml#aa425045d1d3dd394df256d4b0087bc24" title="conv_pa_to_meter" alt="" coords="622,107,751,133"/>
+<area shape="rect" id="node11" href="$d8/d28/vti__ps_8c.xhtml#aa8c959c733fb193f7db8c74889fc8f01" title="ps_read_register" alt="" coords="802,56,921,83"/>
+<area shape="rect" id="node13" href="$d8/d28/vti__ps_8c.xhtml#a5a111736e7d7fbbed73c189ed1d45b81" title="ps_twi_sda" alt="" coords="975,132,1063,159"/>
+<area shape="rect" id="node17" href="$d8/d28/vti__ps_8c.xhtml#a49dfd78503815814186a48488c6a991f" title="ps_twi_write" alt="" coords="971,81,1066,108"/>
+<area shape="rect" id="node20" href="$d8/d28/vti__ps_8c.xhtml#acbe3495716ae246bf71d2419dfabed72" title="ps_twi_read" alt="" coords="973,31,1065,57"/>
+<area shape="rect" id="node15" href="$d8/d28/vti__ps_8c.xhtml#aeec2d2e61bf0b7d2e9f09c4b4fac4490" title="twi_delay" alt="" coords="1132,81,1209,108"/>
+<area shape="rect" id="node30" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="635,259,738,285"/>
+<area shape="rect" id="node38" href="$db/d85/display_8c.xhtml#a9047d98cd15ffbc79e15c63fca36d70b" title="pseudo sprintf function" alt="" coords="654,157,719,184"/>
+<area shape="rect" id="node32" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="814,259,909,285"/>
+<area shape="rect" id="node34" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="973,259,1064,285"/>
+<area shape="rect" id="node36" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="1115,284,1226,311"/>
+<area shape="rect" id="node42" href="$d8/d28/vti__ps_8c.xhtml#af2ab66da002d7051cd8e27b63bb04d06" title="ps_write_register" alt="" coords="801,132,922,159"/>
+<area shape="rect" id="node46" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="813,208,909,235"/>
+<area shape="rect" id="node51" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="441,309,553,336"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="measure_temp" name="measure_temp">
+<area shape="rect" id="node3" href="$d8/dd8/drivers_2temperature_8c.xhtml#a0899f23cfa5c7ad38347b8feceb80b67" title="temperature_measurement" alt="" coords="163,81,341,108"/>
+<area shape="rect" id="node9" href="$db/d97/modules_2temperature_8c.xhtml#abefc6cc8584628d0a116de3162fde706" title="Common display routine for metric and English units." alt="" coords="183,208,321,235"/>
+<area shape="rect" id="node5" href="$dc/ddc/adc12_8c.xhtml#a6202d56d811a4a15e9675420b4b1f8db" title="Init ADC12. Do single conversion. Turn off ADC12." alt="" coords="389,5,557,32"/>
+<area shape="rect" id="node7" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="613,5,709,32"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="424,157,523,184"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="610,132,713,159"/>
+<area shape="rect" id="node15" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="766,132,861,159"/>
+<area shape="rect" id="node21" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="605,208,717,235"/>
+<area shape="rect" id="node24" href="$db/d97/modules_2temperature_8c.xhtml#a93405e6d64c48ecb74bc8e94876cf5f2" title="Display the current unit symbol &amp; +/&#45; value indicator." alt="" coords="396,259,551,285"/>
+<area shape="rect" id="node28" href="$d8/dd8/drivers_2temperature_8c.xhtml#a4792bfaf5c3fa2bee84e6dfaac5ab4d2" title="temperature_get_C" alt="" coords="407,309,540,336"/>
+<area shape="rect" id="node30" href="$d8/dd8/drivers_2temperature_8c.xhtml#a02bc88773acbaadf1784ae3352b66fb5" title="temperature_get_F" alt="" coords="408,360,539,387"/>
+<area shape="rect" id="node34" href="$db/d85/display_8c.xhtml#a9047d98cd15ffbc79e15c63fca36d70b" title="pseudo sprintf function" alt="" coords="441,411,506,437"/>
+<area shape="rect" id="node17" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="909,132,1000,159"/>
+<area shape="rect" id="node19" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="1049,157,1159,184"/>
+</map>

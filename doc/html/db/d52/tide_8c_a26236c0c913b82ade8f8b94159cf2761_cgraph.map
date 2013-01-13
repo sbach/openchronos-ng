@@ -1,0 +1,17 @@
+<map id="longStarButton" name="longStarButton">
+<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="517,449,616,476"/>
+<area shape="rect" id="node16" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="167,69,305,96"/>
+<area shape="rect" id="node20" href="$db/d52/tide_8c.xhtml#adcd9a1bde3289e795b11fdcf0276aead" title="timeNowInMinutes" alt="" coords="501,171,632,197"/>
+<area shape="rect" id="node22" href="$db/d52/tide_8c.xhtml#ab6741cd0eea258802916a855f36f8e55" title="timeInMinutes" alt="" coords="684,133,788,160"/>
+<area shape="rect" id="node25" href="$db/d52/tide_8c.xhtml#aa8fd833b89760ca87a163163aae14187" title="timeFromMinutes" alt="" coords="505,247,628,273"/>
+<area shape="rect" id="node27" href="$db/d52/tide_8c.xhtml#ac19d24cc6cc0121e720da442159a050e" title="blinkCol" alt="" coords="532,500,601,527"/>
+<area shape="rect" id="node30" href="$d2/df2/openchronos_8c.xhtml#afb7a89cc8739b9788a27e80d8b0d90e9" title="Enters edit mode." alt="" coords="163,475,309,501"/>
+<area shape="rect" id="node32" href="$db/d52/tide_8c.xhtml#a2765e984b5f8ae1aed6650d6dc444707" title="endEditing" alt="" coords="195,247,277,273"/>
+<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="685,399,787,425"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="680,449,792,476"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="841,399,935,425"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="984,399,1075,425"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="1123,424,1234,451"/>
+<area shape="rect" id="node18" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="358,44,453,71"/>
+<area shape="rect" id="node38" href="$db/d52/tide_8c.xhtml#add9c243943294a693b79fd92d6cfc99c" title="drawScreen" alt="" coords="360,348,451,375"/>
+</map>

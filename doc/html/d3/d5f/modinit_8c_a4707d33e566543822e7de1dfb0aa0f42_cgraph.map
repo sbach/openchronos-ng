@@ -1,0 +1,51 @@
+<map id="mod_init" name="mod_init">
+<area shape="rect" id="node3" href="$dd/d09/altitude_8c.xhtml#af17950fb2b8549494962ccffd874b104" title="mod_altitude_init" alt="" coords="145,107,265,133"/>
+<area shape="rect" id="node15" href="$d1/d2d/accelerometer_8c.xhtml#a935d2914ac0f3729715bab1080fee1de" title="mod_accelerometer_init" alt="" coords="125,335,285,361"/>
+<area shape="rect" id="node31" href="$dc/d54/clock_8c.xhtml#aec36ff5afe17ee2779e0b0e24aab9ca7" title="mod_clock_init" alt="" coords="151,588,260,615"/>
+<area shape="rect" id="node43" href="$de/dd1/stopwatch_8c.xhtml#a86ff27baec4e95765c90fcdb8e1bfd8a" title="mod_stopwatch_init" alt="" coords="136,816,275,843"/>
+<area shape="rect" id="node62" href="$dc/da5/music_8c.xhtml#ae61e95ab46384b973f91f6575ed64938" title="mod_music_init" alt="" coords="149,1069,262,1096"/>
+<area shape="rect" id="node71" href="$df/dce/alarm_8c.xhtml#ab61f42df97d34533cf86aa88b1f0f798" title="mod_alarm_init" alt="" coords="150,1247,261,1273"/>
+<area shape="rect" id="node83" href="$db/d52/tide_8c.xhtml#a19a6ff01d787085346bfd8d2a34c1895" title="mod_tide_init" alt="" coords="156,1551,255,1577"/>
+<area shape="rect" id="node103" href="$d1/dc6/rfbsl_8c.xhtml#abf8d611962ed519d0a991d94247548fe" title="mod_rfbsl_init" alt="" coords="154,1728,257,1755"/>
+<area shape="rect" id="node110" href="$db/d97/modules_2temperature_8c.xhtml#aea3710888164f63973db2bc6b75bad7e" title="Init the module. Sets default values, register menu entry." alt="" coords="132,664,279,691"/>
+<area shape="rect" id="node113" href="$d2/dc0/otp_8c.xhtml#ae4086bef84911baaf471b853ee9e0842" title="mod_otp_init" alt="" coords="157,715,253,741"/>
+<area shape="rect" id="node116" href="$d8/d7f/modules_2battery_8c.xhtml#aee7c098de30dddd4547509b803e1a8bb" title="mod_battery_init" alt="" coords="146,765,265,792"/>
+<area shape="rect" id="node5" href="$d2/df2/openchronos_8c.xhtml#a71490cfda7ca71ac20d681a8a7a994e1" title="Adds an entry to the main menu." alt="" coords="353,664,471,691"/>
+<area shape="rect" id="node7" href="$dd/d09/altitude_8c.xhtml#a1c5780aafb0e259eb34bb95dcb952d2b" title="altitude_edit" alt="" coords="366,56,458,83"/>
+<area shape="rect" id="node9" href="$dd/d09/altitude_8c.xhtml#a30b0576ebe54127f33390423c407fa39" title="altitude_activate" alt="" coords="353,107,471,133"/>
+<area shape="rect" id="node13" href="$dd/d09/altitude_8c.xhtml#ad4494c76933076bcec7c92ebb0e48149" title="altitude_deactivate" alt="" coords="347,5,477,32"/>
+<area shape="rect" id="node11" href="$d2/df2/openchronos_8c.xhtml#a5aeb07d7031b5d53ca8605bf398714a2" title="Registers a node in the message bus." alt="" coords="539,740,714,767"/>
+<area shape="rect" id="node18" href="$d1/d2d/accelerometer_8c.xhtml#a09dcca3ff3ba8b0a0045abf6f09a87c8" title="up_btn" alt="" coords="381,309,443,336"/>
+<area shape="rect" id="node20" href="$d1/d2d/accelerometer_8c.xhtml#af695d552d42de689963fb72f77bffbe8" title="down_btn" alt="" coords="373,360,451,387"/>
+<area shape="rect" id="node22" href="$d1/d2d/accelerometer_8c.xhtml#ac45981ec8f139799de2761059031da27" title="num_pressed" alt="" coords="362,157,462,184"/>
+<area shape="rect" id="node24" href="$d1/d2d/accelerometer_8c.xhtml#a98c2f38c8be9842b760af29757d87694" title="star_long_pressed" alt="" coords="348,208,476,235"/>
+<area shape="rect" id="node26" href="$d1/d2d/accelerometer_8c.xhtml#abcbcaa7863416e641f147bce3d882790" title="acc_activated" alt="" coords="361,411,463,437"/>
+<area shape="rect" id="node29" href="$d1/d2d/accelerometer_8c.xhtml#a1beaf4dc0dba31d59b95641a3d199524" title="acc_deactivated" alt="" coords="353,259,471,285"/>
+<area shape="rect" id="node34" href="$dc/d54/clock_8c.xhtml#ac45981ec8f139799de2761059031da27" title="num_pressed" alt="" coords="362,512,462,539"/>
+<area shape="rect" id="node36" href="$dc/d54/clock_8c.xhtml#a98c2f38c8be9842b760af29757d87694" title="star_long_pressed" alt="" coords="348,563,476,589"/>
+<area shape="rect" id="node38" href="$dc/d54/clock_8c.xhtml#a3e731bc12fc17e0ce19d9766c06b3a32" title="clock_activated" alt="" coords="355,613,469,640"/>
+<area shape="rect" id="node41" href="$dc/d54/clock_8c.xhtml#a1f08116a446e881d8075283a97fd7d60" title="clock_deactivated" alt="" coords="349,461,475,488"/>
+<area shape="rect" id="node45" href="$de/dd1/stopwatch_8c.xhtml#ac9b29bbda1fac306d56e61089ec8ac21" title="clear_stopwatch" alt="" coords="568,993,685,1020"/>
+<area shape="rect" id="node48" href="$de/dd1/stopwatch_8c.xhtml#a03aedb19c639b84174592190e5c648d5" title="up_press" alt="" coords="375,917,449,944"/>
+<area shape="rect" id="node50" href="$de/dd1/stopwatch_8c.xhtml#a0ac87fd2e3f34e16f0647466bcc80244" title="down_press" alt="" coords="366,715,458,741"/>
+<area shape="rect" id="node52" href="$de/dd1/stopwatch_8c.xhtml#a59733069c598c7864f48ad923cc5ea0d" title="num_press" alt="" coords="369,765,455,792"/>
+<area shape="rect" id="node54" href="$de/dd1/stopwatch_8c.xhtml#a46f772fa9a20c54fa4e3e0f3d6b3696e" title="num_long_pressed" alt="" coords="347,968,477,995"/>
+<area shape="rect" id="node57" href="$de/dd1/stopwatch_8c.xhtml#a7ccfd2ccec37875561ce7daa2e5fd83f" title="stopwatch_activated" alt="" coords="341,867,483,893"/>
+<area shape="rect" id="node60" href="$de/dd1/stopwatch_8c.xhtml#acea2628ec4c64a0a845a3c4e48a9714e" title="stopwatch_deactivated" alt="" coords="334,816,490,843"/>
+<area shape="rect" id="node65" href="$dc/da5/music_8c.xhtml#a59733069c598c7864f48ad923cc5ea0d" title="num_press" alt="" coords="369,1069,455,1096"/>
+<area shape="rect" id="node67" href="$dc/da5/music_8c.xhtml#a789c658a4e6425d0eea6501b7182fe85" title="music_activate" alt="" coords="357,1120,467,1147"/>
+<area shape="rect" id="node69" href="$dc/da5/music_8c.xhtml#adcfcd0a7c601e51ceb9f0280526f46ca" title="music_deactivate" alt="" coords="350,1171,474,1197"/>
+<area shape="rect" id="node74" href="$df/dce/alarm_8c.xhtml#ac45981ec8f139799de2761059031da27" title="num_pressed" alt="" coords="362,1221,462,1248"/>
+<area shape="rect" id="node77" href="$df/dce/alarm_8c.xhtml#a98c2f38c8be9842b760af29757d87694" title="star_long_pressed" alt="" coords="348,1272,476,1299"/>
+<area shape="rect" id="node79" href="$df/dce/alarm_8c.xhtml#a7db846d88e6ebb4e4a72147a623593a5" title="alarm_activated" alt="" coords="355,1323,469,1349"/>
+<area shape="rect" id="node81" href="$df/dce/alarm_8c.xhtml#a392283ff1f270ab3890e54f026d0800f" title="alarm_deactivated" alt="" coords="348,1373,476,1400"/>
+<area shape="rect" id="node86" href="$db/d52/tide_8c.xhtml#a9a6d13b57c7a29f41ed8638808991094" title="minuteTick" alt="" coords="369,1728,455,1755"/>
+<area shape="rect" id="node88" href="$db/d52/tide_8c.xhtml#aa8fd833b89760ca87a163163aae14187" title="timeFromMinutes" alt="" coords="565,1627,688,1653"/>
+<area shape="rect" id="node91" href="$db/d52/tide_8c.xhtml#a637bd2a826f81571d1f05c71e381da64" title="buttonUp" alt="" coords="375,1677,449,1704"/>
+<area shape="rect" id="node93" href="$db/d52/tide_8c.xhtml#a9048643f43ed021401a1a507d45ec756" title="buttonDown" alt="" coords="366,1779,458,1805"/>
+<area shape="rect" id="node95" href="$db/d52/tide_8c.xhtml#a26236c0c913b82ade8f8b94159cf2761" title="longStarButton" alt="" coords="358,1576,466,1603"/>
+<area shape="rect" id="node98" href="$db/d52/tide_8c.xhtml#a94cf1888e4c44d0e5ff68b1e81f2b08d" title="activate" alt="" coords="378,1475,446,1501"/>
+<area shape="rect" id="node100" href="$db/d52/tide_8c.xhtml#aa5ff3907e5d36703b805ea8b4c3452eb" title="deactivate" alt="" coords="371,1525,453,1552"/>
+<area shape="rect" id="node106" href="$d1/dc6/rfbsl_8c.xhtml#adb663cb716f8d414ee1b7a54556f52ae" title="updown_press" alt="" coords="359,1829,465,1856"/>
+<area shape="rect" id="node108" href="$d1/dc6/rfbsl_8c.xhtml#a9878554343e51488c9a876dda4be7770" title="rfbsl_activate" alt="" coords="362,1880,462,1907"/>
+</map>

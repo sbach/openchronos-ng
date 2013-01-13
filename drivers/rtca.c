@@ -23,7 +23,7 @@
 	basic alarm is implemented (bell at 08:30). */
 
 #include "rtca.h"
-#include "rtca_now.h"
+#include "config/rtca_now.h"
 
 #ifdef CONFIG_RTC_DST
 #include "rtc_dst.h"

@@ -20,7 +20,7 @@
  */
 
 
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 /* driver */
 #include <drivers/rtca.h>

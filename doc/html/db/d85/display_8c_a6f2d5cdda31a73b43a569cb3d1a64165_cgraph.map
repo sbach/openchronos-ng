@@ -1,0 +1,5 @@
+<map id="display_chars" name="display_chars">
+<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="158,5,253,32"/>
+<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="301,5,392,32"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="441,5,551,32"/>
+</map>

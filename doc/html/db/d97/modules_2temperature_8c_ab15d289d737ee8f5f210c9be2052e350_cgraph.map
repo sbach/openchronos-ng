@@ -1,0 +1,10 @@
+<map id="temperature_edit" name="temperature_edit">
+<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="368,5,507,32"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="386,81,489,108"/>
+<area shape="rect" id="node15" href="$d2/df2/openchronos_8c.xhtml#afb7a89cc8739b9788a27e80d8b0d90e9" title="Enters edit mode." alt="" coords="173,81,320,108"/>
+<area shape="rect" id="node17" href="$db/d97/modules_2temperature_8c.xhtml#a526be03516a6dde8148ef26954c1ab5a" title="Stuff to do when we exit the edit mode." alt="" coords="207,31,286,57"/>
+<area shape="rect" id="node5" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="555,5,650,32"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="555,81,650,108"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="699,81,789,108"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="838,81,949,108"/>
+</map>

@@ -6,7 +6,7 @@ strip_zero()
 }
 
 
-cat << EOF > drivers/rtca_now.h
+cat << EOF > config/rtca_now.h
 
 #ifndef __RTCA_NOW_H__
 #define __RTCA_NOW_H__

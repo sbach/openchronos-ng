@@ -1,0 +1,26 @@
+<map id="mod_clock_init" name="mod_clock_init">
+<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml#a71490cfda7ca71ac20d681a8a7a994e1" title="Adds an entry to the main menu." alt="" coords="167,82,286,109"/>
+<area shape="rect" id="node5" href="$dc/d54/clock_8c.xhtml#ac45981ec8f139799de2761059031da27" title="num_pressed" alt="" coords="177,133,277,160"/>
+<area shape="rect" id="node11" href="$dc/d54/clock_8c.xhtml#a98c2f38c8be9842b760af29757d87694" title="star_long_pressed" alt="" coords="163,184,291,210"/>
+<area shape="rect" id="node37" href="$dc/d54/clock_8c.xhtml#a3e731bc12fc17e0ce19d9766c06b3a32" title="clock_activated" alt="" coords="170,474,283,501"/>
+<area shape="rect" id="node48" href="$dc/d54/clock_8c.xhtml#a1f08116a446e881d8075283a97fd7d60" title="clock_deactivated" alt="" coords="163,260,290,286"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="576,94,715,121"/>
+<area shape="rect" id="node9" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="795,94,890,121"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="589,348,701,374"/>
+<area shape="rect" id="node17" href="$d2/df2/openchronos_8c.xhtml#afb7a89cc8739b9788a27e80d8b0d90e9" title="Enters edit mode." alt="" coords="360,44,507,70"/>
+<area shape="rect" id="node19" href="$dc/d54/clock_8c.xhtml#aaf27ce1b2e6b72fd545354a840702d12" title="edit_save" alt="" coords="394,145,473,172"/>
+<area shape="rect" id="node15" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="1110,373,1221,400"/>
+<area shape="rect" id="node21" href="$d4/d9d/rtca_8c.xhtml#ac8b1afe9dddfab4d4b414054bb8c3bda" title="rtca_set_time" alt="" coords="595,145,696,172"/>
+<area shape="rect" id="node23" href="$d4/d9d/rtca_8c.xhtml#ae8a24531bf3ff143e0027d126309ecd4" title="rtca_set_date" alt="" coords="595,196,696,222"/>
+<area shape="rect" id="node29" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="594,297,697,324"/>
+<area shape="rect" id="node25" href="$d4/d9d/rtca_8c.xhtml#ae4754ee1b841e8b4e838253fb0b4ebd3" title="rtca_get_max_days" alt="" coords="775,170,911,197"/>
+<area shape="rect" id="node27" href="$d4/d53/rtc__dst_8h.xhtml#ad054f92362bb72817d29c5a54898b6f9" title="rtc_dst_calculate_dates" alt="" coords="763,221,923,248"/>
+<area shape="rect" id="node31" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="795,398,890,425"/>
+<area shape="rect" id="node33" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="971,398,1061,425"/>
+<area shape="rect" id="node39" href="$d2/df2/openchronos_8c.xhtml#a5aeb07d7031b5d53ca8605bf398714a2" title="Registers a node in the message bus." alt="" coords="346,601,521,628"/>
+<area shape="rect" id="node41" href="$dc/d54/clock_8c.xhtml#a308a03c1199b5494e861bd9f5b68589f" title="clock_event" alt="" coords="387,398,479,425"/>
+<area shape="rect" id="node44" href="$db/d85/display_8c.xhtml#a4c1000a508e4527145c75b4827d81dd8" title="Creates virtual screens." alt="" coords="366,500,501,526"/>
+<area shape="rect" id="node50" href="$d2/df2/openchronos_8c.xhtml#a60705ce0564ce52c1977a32cee3215c2" title="Unregisters a node from the message bus." alt="" coords="339,246,527,273"/>
+<area shape="rect" id="node53" href="$db/d85/display_8c.xhtml#acef5af52e5b50c8ba28846cbc0c3e683" title="Destroys all virtual screen." alt="" coords="362,94,505,121"/>
+<area shape="rect" id="node57" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="384,297,483,324"/>
+</map>

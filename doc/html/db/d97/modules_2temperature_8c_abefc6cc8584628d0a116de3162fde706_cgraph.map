@@ -1,0 +1,12 @@
+<map id="display_temperature" name="display_temperature">
+<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="220,71,319,98"/>
+<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="399,46,502,73"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="555,46,650,73"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="395,122,507,149"/>
+<area shape="rect" id="node16" href="$db/d97/modules_2temperature_8c.xhtml#a93405e6d64c48ecb74bc8e94876cf5f2" title="Display the current unit symbol &amp; +/&#45; value indicator." alt="" coords="192,122,347,149"/>
+<area shape="rect" id="node20" href="$d8/dd8/drivers_2temperature_8c.xhtml#a4792bfaf5c3fa2bee84e6dfaac5ab4d2" title="temperature_get_C" alt="" coords="203,223,336,250"/>
+<area shape="rect" id="node22" href="$d8/dd8/drivers_2temperature_8c.xhtml#a02bc88773acbaadf1784ae3352b66fb5" title="temperature_get_F" alt="" coords="204,274,335,301"/>
+<area shape="rect" id="node26" href="$db/d85/display_8c.xhtml#a9047d98cd15ffbc79e15c63fca36d70b" title="pseudo sprintf function" alt="" coords="237,325,302,351"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="699,46,789,73"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="838,71,949,98"/>
+</map>

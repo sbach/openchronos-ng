@@ -1,0 +1,16 @@
+<map id="activate" name="activate">
+<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#a4c1000a508e4527145c75b4827d81dd8" title="Creates virtual screens." alt="" coords="125,5,259,32"/>
+<area shape="rect" id="node5" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="123,56,261,83"/>
+<area shape="rect" id="node9" href="$db/d52/tide_8c.xhtml#add9c243943294a693b79fd92d6cfc99c" title="drawScreen" alt="" coords="147,183,237,209"/>
+<area shape="rect" id="node7" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="327,5,422,32"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="325,107,424,133"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="493,107,595,133"/>
+<area shape="rect" id="node21" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="488,157,600,184"/>
+<area shape="rect" id="node24" href="$db/d52/tide_8c.xhtml#adcd9a1bde3289e795b11fdcf0276aead" title="timeNowInMinutes" alt="" coords="309,259,440,285"/>
+<area shape="rect" id="node26" href="$db/d52/tide_8c.xhtml#ab6741cd0eea258802916a855f36f8e55" title="timeInMinutes" alt="" coords="492,284,596,311"/>
+<area shape="rect" id="node29" href="$db/d52/tide_8c.xhtml#aa8fd833b89760ca87a163163aae14187" title="timeFromMinutes" alt="" coords="313,360,436,387"/>
+<area shape="rect" id="node32" href="$db/d52/tide_8c.xhtml#ac19d24cc6cc0121e720da442159a050e" title="blinkCol" alt="" coords="340,157,409,184"/>
+<area shape="rect" id="node15" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="649,107,743,133"/>
+<area shape="rect" id="node17" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="792,107,883,133"/>
+<area shape="rect" id="node19" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="931,132,1042,159"/>
+</map>

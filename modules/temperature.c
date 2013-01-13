@@ -59,7 +59,7 @@
 // Include section
 
 // System
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 // Driver
 #include "drivers/display.h"
@@ -83,11 +83,12 @@ int8_t temp_display_metric = 0; // Degrees by default (put this in cfg maybe ?)
 // Extern section
 
 
-// *************************************************************************************************
-// @fn          clear_temperature
-// @brief       Clear the previous value of the temperature on the screen.
-// @return      none
-// *************************************************************************************************
+//* ************************************************************************************************
+/// @fn			display_temp_symbols(int8_t disp)
+/// @brief		Display the current unit symbol & +/- value indicator.
+/// @param		disp Toogle on/off the symbols
+/// @return		none
+//* ************************************************************************************************
 void display_temp_symbols(int8_t disp)
 {
 	if(disp == 0) {
@@ -101,12 +102,12 @@ void display_temp_symbols(int8_t disp)
 }
 
 
-// *************************************************************************************************
-// @fn          display_temperature
-// @brief       Common display routine for metric and English units.
-// @return      none
-// *************************************************************************************************
-void display_temperature()
+//* ************************************************************************************************
+/// @fn			display_temperature(void)
+/// @brief		Common display routine for metric and English units.
+/// @return		none
+//* ************************************************************************************************
+void display_temperature(void)
 {
 	int16_t temp_inmetric;
 
@@ -170,8 +171,16 @@ void display_temperature()
 }
 
 
+// *************************************************************************************************
 // BEGIN - EDIT_MODE_SECTION ***********************************************************************
+// *************************************************************************************************
 
+
+//* ************************************************************************************************
+/// @fn			edit_offset_sel(void)
+/// @brief		Start routine of the offset menu item.
+/// @return		none
+//* ************************************************************************************************
 static void edit_offset_sel(void)
 {
 	// Display "OFST" as title
@@ -180,10 +189,24 @@ static void edit_offset_sel(void)
 	// Display the current offset
 	display_chars(1, LCD_SEG_L1_3_0, _sprintf("%2s", temperature.offset / 10), SEG_SET);
 }
+
+
+//* ************************************************************************************************
+/// @fn			edit_offset_dsel(void)
+/// @brief		Exit routine of the offset menu item.
+/// @return		none
+//* ************************************************************************************************
 static void edit_offset_dsel(void)
 {
 	// Nothing to do for now
 }
+
+
+//* ************************************************************************************************
+/// @fn			edit_offset_set(int8_t step)
+/// @brief		Change the current offset's value when up/down buttons active.
+/// @return		none
+//* ************************************************************************************************
 static void edit_offset_set(int8_t step)
 {
 	// Edit the offset by 10 each time (faster)
@@ -193,10 +216,18 @@ static void edit_offset_set(int8_t step)
 	display_chars(1, LCD_SEG_L1_3_0, _sprintf("%2s", temperature.offset / 10), SEG_SET);
 }
 
+
+// *************************************************************************************************
+// [UP] Offset selection	-	[DOWN] Metric selection
 // *************************************************************************************************
 
 #if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
 
+//* ************************************************************************************************
+/// @fn			edit_metric_sel(void)
+/// @brief		Start routine of the metric menu item.
+/// @return		none
+//* ************************************************************************************************
 static void edit_metric_sel(void)
 {
 	// Display "MTRC" as title
@@ -205,10 +236,24 @@ static void edit_metric_sel(void)
 	// Display the current metric system used
 	display_chars(1, LCD_SEG_L1_3_0, (temp_display_metric == 0 ? "CELS " : "FARH"), SEG_SET);
 }
+
+
+//* ************************************************************************************************
+/// @fn			edit_metric_dsel(void)
+/// @brief		Exit routine of the metric menu item.
+/// @return		none
+//* ************************************************************************************************
 static void edit_metric_dsel(void)
 {
 	// Nothing to do for now
 }
+
+
+//* ************************************************************************************************
+/// @fn			edit_metric_set(int8_t step)
+/// @brief		Switch between °C and °F.
+/// @return		none
+//* ************************************************************************************************
 static void edit_metric_set(int8_t step)
 {
 	// Switch from °C to °F
@@ -220,12 +265,12 @@ static void edit_metric_set(int8_t step)
 
 #endif
 
-// *************************************************************************************************
-// @fn          edit_save
-// @brief       Stuff to do when we exit the edit mode
-// @return      none
-// *************************************************************************************************
-static void edit_save()
+//* ************************************************************************************************
+/// @fn			edit_save(void)
+/// @brief		Stuff to do when we exit the edit mode.
+/// @return		none
+//* ************************************************************************************************
+static void edit_save(void)
 {
 	// Disable blinking for the offset value
 	display_chars(1, LCD_SEG_L1_3_0, NULL, BLINK_OFF);
@@ -234,14 +279,17 @@ static void edit_save()
 	lcd_screen_activate(0);
 }
 
+
+// *************************************************************************************************
 // END - EDIT_MODE_SECTION *************************************************************************
+// *************************************************************************************************
 
 
-// *************************************************************************************************
-// @fn          measure_temp
-// @brief       Temperature display routine. Mesure and parse the temperature.
-// @return      none
-// *************************************************************************************************
+//* ************************************************************************************************
+/// @fn			measure_temp(enum sys_message msg)
+/// @brief		Temperature display routine. Mesure and parse the temperature.
+/// @return		none
+//* ************************************************************************************************
 static void measure_temp(enum sys_message msg)
 {
 	// Call the driver to measure the temperature
@@ -252,12 +300,12 @@ static void measure_temp(enum sys_message msg)
 }
 
 
-// *************************************************************************************************
-// @fn          temperature_activate
-// @brief       Temperature screen activation. Display defaul stuff, register the mesuring loop.
-// @return      none
-// *************************************************************************************************
-static void temperature_activate()
+//* ************************************************************************************************
+/// @fn			temperature_activate(void)
+/// @brief		Temperature screen activation. Display defaul stuff, register the mesuring loop.
+/// @return		none
+//* ************************************************************************************************
+static void temperature_activate(void)
 {
 	// Create two screens, the first is always the active one
 	lcd_screens_create(2);
@@ -273,12 +321,12 @@ static void temperature_activate()
 }
 
 
-// *************************************************************************************************
-// @fn          temperature_deactivate
-// @brief       Temperature screen desactivation. Clear the screen, reset the events & values.
-// @return      none
-// *************************************************************************************************
-static void temperature_deactivate()
+//* ************************************************************************************************
+/// @fn			temperature_deactivate(void)
+/// @brief		Temperature screen desactivation. Clear the screen, reset the events & values.
+/// @return		none
+//* ************************************************************************************************
+static void temperature_deactivate(void)
 {
 	// Unregister the event
 	sys_messagebus_unregister(&measure_temp);
@@ -293,9 +341,9 @@ static void temperature_deactivate()
 }
 
 
-// *************************************************************************************************
-// Edit menu for this module
-// *************************************************************************************************
+//* ************************************************************************************************
+/// Edit menu for this module
+//* ************************************************************************************************
 static struct menu_editmode_item edit_items[] = {
 	{&edit_offset_sel, &edit_offset_dsel, &edit_offset_set},
 #if CONFIG_TEMPERATURE_METRIC == TEMPERATURE_DEGREES_BOTH
@@ -304,11 +352,12 @@ static struct menu_editmode_item edit_items[] = {
 	{ NULL },
 };
 
-// *************************************************************************************************
-// @fn          mod_temperature_init
-// @brief       Init the module. Sets default values, register menu entry.
-// @return      none
-// *************************************************************************************************
+
+//* ************************************************************************************************
+/// @fn			mod_temperature_init(void)
+/// @brief		Init the module. Sets default values, register menu entry.
+/// @return		none
+//* ************************************************************************************************
 static void temperature_edit(void)
 {
 	// display_temp_symbols(0);
@@ -324,11 +373,11 @@ static void temperature_edit(void)
 }
 
 
-// *************************************************************************************************
-// @fn          mod_temperature_init
-// @brief       Init the module. Sets default values, register menu entry.
-// @return      none
-// *************************************************************************************************
+//* ************************************************************************************************
+/// @fn			mod_temperature_init(void)
+/// @brief		Init the module. Sets default values, register menu entry.
+/// @return		none
+//* ************************************************************************************************
 void mod_temperature_init(void)
 {			
 	menu_add_entry(" TEMP",

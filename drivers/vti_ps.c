@@ -40,7 +40,7 @@
 // Include section
 
 // system
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 // driver
 #include "vti_ps.h"

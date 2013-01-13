@@ -1,0 +1,10 @@
+<map id="altitude_measurement" name="altitude_measurement">
+<area shape="rect" id="node3" href="$d8/d28/vti__ps_8c.xhtml#a9ede906177cc352bf1779ad77b31adfd" title="ps_get_temp" alt="" coords="222,31,319,57"/>
+<area shape="rect" id="node17" href="$d8/d28/vti__ps_8c.xhtml#a8a91cc2854b65a63e9b3882823847b7e" title="ps_get_pa" alt="" coords="229,81,312,108"/>
+<area shape="rect" id="node20" href="$d8/d28/vti__ps_8c.xhtml#aa425045d1d3dd394df256d4b0087bc24" title="conv_pa_to_meter" alt="" coords="206,132,335,159"/>
+<area shape="rect" id="node5" href="$d8/d28/vti__ps_8c.xhtml#aa8c959c733fb193f7db8c74889fc8f01" title="ps_read_register" alt="" coords="385,56,503,83"/>
+<area shape="rect" id="node7" href="$d8/d28/vti__ps_8c.xhtml#a5a111736e7d7fbbed73c189ed1d45b81" title="ps_twi_sda" alt="" coords="556,5,644,32"/>
+<area shape="rect" id="node11" href="$d8/d28/vti__ps_8c.xhtml#a49dfd78503815814186a48488c6a991f" title="ps_twi_write" alt="" coords="553,56,647,83"/>
+<area shape="rect" id="node14" href="$d8/d28/vti__ps_8c.xhtml#acbe3495716ae246bf71d2419dfabed72" title="ps_twi_read" alt="" coords="554,107,646,133"/>
+<area shape="rect" id="node9" href="$d8/d28/vti__ps_8c.xhtml#aeec2d2e61bf0b7d2e9f09c4b4fac4490" title="twi_delay" alt="" coords="696,56,773,83"/>
+</map>

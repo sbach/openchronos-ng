@@ -1,0 +1,9 @@
+<map id="drivers/temperature.c" name="drivers/temperature.c">
+<area shape="rect" id="node3" href="$d6/d91/temperature_8h.xhtml" title="temperature.h" alt="" coords="5,80,107,107"/>
+<area shape="rect" id="node13" href="$d2/d54/ports_8h.xhtml" title="ports.h" alt="" coords="131,80,193,107"/>
+<area shape="rect" id="node15" href="$d4/d68/display_8h.xhtml" title="Display driver." alt="" coords="219,80,292,107"/>
+<area shape="rect" id="node18" href="$d1/d67/adc12_8h.xhtml" title="ADC12 header file." alt="" coords="318,80,385,107"/>
+<area shape="rect" id="node21" href="$d5/dd0/timer_8h.xhtml" title="openchronos&#45;ng timer driver" alt="" coords="410,80,472,107"/>
+<area shape="rect" id="node5" href="$d9/d95/openchronos_8h.xhtml" title="Main include file." alt="" coords="236,155,371,181"/>
+<area shape="rect" id="node11" href="$db/d16/config_8h.xhtml" title="config/config.h" alt="" coords="368,229,475,256"/>
+</map>

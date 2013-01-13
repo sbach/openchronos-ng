@@ -1,3 +1,8 @@
+/**
+	@file	drivers/adc12.c
+	@brief	ADC12 functions
+ */
+
 // *************************************************************************************************
 //
 //	Copyright (C) 2009 Texas Instruments Incorporated - http://www.ti.com/
@@ -32,17 +37,15 @@
 //	  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // *************************************************************************************************
-// ADC12 functions.
-// *************************************************************************************************
 
 
 // *************************************************************************************************
 // Include section
 
-// system
-#include <openchronos.h>
+// System
+#include <core/openchronos.h>
 
-// driver
+// Driver
 #include "adc12.h"
 #include "timer.h"
 
@@ -57,6 +60,7 @@
 
 // *************************************************************************************************
 // Global Variable section
+
 uint16_t adc12_result;
 uint8_t  adc12_data_ready;
 
@@ -65,12 +69,9 @@ uint8_t  adc12_data_ready;
 // Extern section
 
 
-// *************************************************************************************************
-// @fn          adc12_single_conversion
-// @brief       Init ADC12. Do single conversion. Turn off ADC12.
-// @param       none
-// @return      none
-// *************************************************************************************************
+//* ************************************************************************************************
+/// @brief	Init ADC12. Do single conversion. Turn off ADC12.
+//* ************************************************************************************************
 uint16_t adc12_single_conversion(uint16_t ref, uint16_t sht, uint16_t channel)
 {
 	// Initialize the shared reference module
@@ -117,85 +118,87 @@ uint16_t adc12_single_conversion(uint16_t ref, uint16_t sht, uint16_t channel)
 	return (adc12_result);
 }
 
-
-
-
-// *************************************************************************************************
-// @fn          ADC12ISR
-// @brief       Store ADC12 conversion result. Set flag to indicate data ready.
-// @param       none
-// @return      none
-// *************************************************************************************************
-//pfs wrapped the following to accommodate mspgcc compiler
+//* ************************************************************************************************
+/// Pfs wrapped the following to accommodate mspgcc compiler.
+//* ************************************************************************************************
 #ifdef __GNUC__
 __attribute__((interrupt(ADC12_VECTOR)))
 #else
 #pragma vector = ADC12_VECTOR
 __interrupt
 #endif
+
+//* ************************************************************************************************
+/// @brief		Store ADC12 conversion result. Set flag to indicate data ready.
+/// @return		none
+//* ************************************************************************************************
 void ADC12ISR(void)
 {
-	switch (__even_in_range(ADC12IV, 34)) {
-	case  0:
-		break;                           // Vector  0:  No interrupt
+	switch (__even_in_range(ADC12IV, 34))
+	{
+		case  0:						// Vector  0:  No interrupt
+			break;
 
-	case  2:
-		break;                           // Vector  2:  ADC overflow
+		case  2:						// Vector  2:  ADC overflow
+			break;
 
-	case  4:
-		break;                           // Vector  4:  ADC timing overflow
+		case  4:						// Vector  4:  ADC timing overflow
+			break;
 
-	case  6:                                  // Vector  6:  ADC12IFG0
-		adc12_result = ADC12MEM0;                       // Move results, IFG is cleared
-		adc12_data_ready = 1;
-		_BIC_SR_IRQ(LPM3_bits);   						// Exit active CPU
-		break;
+		case  6:						// Vector  6:  ADC12IFG0
+			
+			// Move results, IFG is cleared
+			adc12_result = ADC12MEM0;
+			adc12_data_ready = 1;
 
-	case  8:
-		break;                           // Vector  8:  ADC12IFG1
+			// Exit active CPU
+			_BIC_SR_IRQ(LPM3_bits);
+			
+			break;
 
-	case 10:
-		break;                           // Vector 10:  ADC12IFG2
+		case  8:						// Vector  8:  ADC12IFG1
+			break;
+			
+		case 10:						// Vector 10:  ADC12IFG2
+			break;
 
-	case 12:
-		break;                           // Vector 12:  ADC12IFG3
+		case 12:						// Vector 12:  ADC12IFG3
+			break;
 
-	case 14:
-		break;                           // Vector 14:  ADC12IFG4
+		case 14:						// Vector 14:  ADC12IFG4
+			break;
 
-	case 16:
-		break;                           // Vector 16:  ADC12IFG5
+		case 16:						// Vector 16:  ADC12IFG5
+			break;
 
-	case 18:
-		break;                           // Vector 18:  ADC12IFG6
+		case 18:						// Vector 18:  ADC12IFG6
+			break;
 
-	case 20:
-		break;                           // Vector 20:  ADC12IFG7
+		case 20:						// Vector 20:  ADC12IFG7
+			break;
 
-	case 22:
-		break;                           // Vector 22:  ADC12IFG8
+		case 22:						// Vector 22:  ADC12IFG8
+			break;
 
-	case 24:
-		break;                           // Vector 24:  ADC12IFG9
+		case 24:						// Vector 24:  ADC12IFG9
+			break;
 
-	case 26:
-		break;                           // Vector 26:  ADC12IFG10
+		case 26:						// Vector 26:  ADC12IFG10
+			break;
 
-	case 28:
-		break;                           // Vector 28:  ADC12IFG11
+		case 28:						// Vector 28:  ADC12IFG11
+			break;
 
-	case 30:
-		break;                           // Vector 30:  ADC12IFG12
+		case 30:						// Vector 30:  ADC12IFG12
+			break;
 
-	case 32:
-		break;                           // Vector 32:  ADC12IFG13
+		case 32:						// Vector 32:  ADC12IFG13
+			break;
 
-	case 34:
-		break;                           // Vector 34:  ADC12IFG14
+		case 34:						// Vector 34:  ADC12IFG14
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 }
-
-

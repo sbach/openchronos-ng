@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 #include "drivers/display.h"
 #include "drivers/battery.h"

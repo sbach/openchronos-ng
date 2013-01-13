@@ -1,0 +1,21 @@
+<map id="mod_stopwatch_init" name="mod_stopwatch_init">
+<area shape="rect" id="node3" href="$de/dd1/stopwatch_8c.xhtml#ac9b29bbda1fac306d56e61089ec8ac21" title="clear_stopwatch" alt="" coords="433,7,551,34"/>
+<area shape="rect" id="node5" href="$d2/df2/openchronos_8c.xhtml#a71490cfda7ca71ac20d681a8a7a994e1" title="Adds an entry to the main menu." alt="" coords="211,539,330,566"/>
+<area shape="rect" id="node7" href="$de/dd1/stopwatch_8c.xhtml#a03aedb19c639b84174592190e5c648d5" title="up_press" alt="" coords="233,159,308,186"/>
+<area shape="rect" id="node24" href="$de/dd1/stopwatch_8c.xhtml#a0ac87fd2e3f34e16f0647466bcc80244" title="down_press" alt="" coords="225,210,317,236"/>
+<area shape="rect" id="node28" href="$de/dd1/stopwatch_8c.xhtml#a59733069c598c7864f48ad923cc5ea0d" title="num_press" alt="" coords="449,260,535,287"/>
+<area shape="rect" id="node31" href="$de/dd1/stopwatch_8c.xhtml#a46f772fa9a20c54fa4e3e0f3d6b3696e" title="num_long_pressed" alt="" coords="205,58,336,84"/>
+<area shape="rect" id="node35" href="$de/dd1/stopwatch_8c.xhtml#a7ccfd2ccec37875561ce7daa2e5fd83f" title="stopwatch_activated" alt="" coords="199,362,342,388"/>
+<area shape="rect" id="node44" href="$de/dd1/stopwatch_8c.xhtml#acea2628ec4c64a0a845a3c4e48a9714e" title="stopwatch_deactivated" alt="" coords="193,488,349,515"/>
+<area shape="rect" id="node9" href="$de/dd1/stopwatch_8c.xhtml#aa0ed77a7ae91fdf019637f338a035bbc" title="increment_lap_stopwatch" alt="" coords="407,159,577,186"/>
+<area shape="rect" id="node11" href="$de/dd1/stopwatch_8c.xhtml#a8ef9fc26e81a38682849cab809cc500e" title="drawStopWatchScreen" alt="" coords="635,311,791,338"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="845,387,947,414"/>
+<area shape="rect" id="node21" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="840,438,952,464"/>
+<area shape="rect" id="node15" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="1001,387,1095,414"/>
+<area shape="rect" id="node17" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="1144,387,1235,414"/>
+<area shape="rect" id="node19" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="1283,412,1394,439"/>
+<area shape="rect" id="node38" href="$d2/df2/openchronos_8c.xhtml#a5aeb07d7031b5d53ca8605bf398714a2" title="Registers a node in the message bus." alt="" coords="405,311,579,338"/>
+<area shape="rect" id="node40" href="$de/dd1/stopwatch_8c.xhtml#a00f8b39897039c57fed601ea1d449184" title="stopwatch_event" alt="" coords="431,463,553,490"/>
+<area shape="rect" id="node46" href="$db/d85/display_8c.xhtml#aa150336a018e90f37fd0285047b541f6" title="Clears the screen." alt="" coords="664,463,763,490"/>
+<area shape="rect" id="node50" href="$d2/df2/openchronos_8c.xhtml#a60705ce0564ce52c1977a32cee3215c2" title="Unregisters a node from the message bus." alt="" coords="398,615,586,642"/>
+</map>

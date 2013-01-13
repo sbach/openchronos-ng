@@ -21,7 +21,7 @@
 #ifndef __TEMPERATURE_H__
 #define __TEMPERATURE_H__
 
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 #define TEMPERATURE_DEGREES_C		0
 #define TEMPERATURE_DEGREES_F		1

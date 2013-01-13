@@ -23,7 +23,7 @@
 #define RTCA_WD_EN 1
 #define RTCA_WD_FR 2
 
-#include <openchronos.h>
+#include <core/openchronos.h>
 
 enum rtca_tevent {
 	RTCA_EV_ALARM	= BIT0,

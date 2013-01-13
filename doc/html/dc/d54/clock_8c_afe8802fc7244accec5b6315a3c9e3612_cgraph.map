@@ -1,0 +1,8 @@
+<map id="edit_mo_sel" name="edit_mo_sel">
+<area shape="rect" id="node3" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="147,5,285,32"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="165,56,267,83"/>
+<area shape="rect" id="node5" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="334,5,429,32"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="334,56,429,83"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="477,56,568,83"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="617,56,727,83"/>
+</map>

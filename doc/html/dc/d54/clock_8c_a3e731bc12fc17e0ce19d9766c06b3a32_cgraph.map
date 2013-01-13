@@ -1,0 +1,9 @@
+<map id="clock_activated" name="clock_activated">
+<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml#a5aeb07d7031b5d53ca8605bf398714a2" title="Registers a node in the message bus." alt="" coords="169,5,343,32"/>
+<area shape="rect" id="node5" href="$dc/d54/clock_8c.xhtml#a308a03c1199b5494e861bd9f5b68589f" title="clock_event" alt="" coords="210,56,302,83"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#af604e78dcc4e0f1a204b2180c5e54957" title="Displays a symbol." alt="" coords="392,107,504,133"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a4c1000a508e4527145c75b4827d81dd8" title="Creates virtual screens." alt="" coords="189,157,323,184"/>
+<area shape="rect" id="node14" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="209,208,303,235"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="553,132,663,159"/>
+<area shape="rect" id="node16" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="403,183,493,209"/>
+</map>

@@ -19,7 +19,7 @@
     from Peter C. Gutmann's implementation as found in
     Applied Cryptography by Bruce Schneier
 */
-#include <openchronos.h>
+#include <core/openchronos.h>
 #include <string.h>
 
 #include <drivers/rtca.h>

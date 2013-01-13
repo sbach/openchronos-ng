@@ -14,7 +14,7 @@ import subprocess
 import os, re, sys
 
 pop = subprocess.Popen(["mspdebug","rf2500"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-pop.stdin.write("sym import build/eZChronos.dbg.elf\n")
+pop.stdin.write("sym import build/openchronos.elf\n")
 
 INPUT_LINE = re.compile(r'''\(mspdebug\) .*''')
 PC_MATCH = re.compile(r'''PC: ([0-9a-fA-F]+)''')

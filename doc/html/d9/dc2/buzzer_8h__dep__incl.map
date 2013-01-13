@@ -1,0 +1,6 @@
+<map id="drivers/buzzer.h" name="drivers/buzzer.h">
+<area shape="rect" id="node3" href="$d2/df2/openchronos_8c.xhtml" title="Main loop &amp; user interface." alt="" coords="5,80,140,107"/>
+<area shape="rect" id="node5" href="$d3/d4c/buzzer_8c.xhtml" title="drivers/buzzer.c" alt="" coords="165,80,280,107"/>
+<area shape="rect" id="node7" href="$d1/d2d/accelerometer_8c.xhtml" title="modules/accelerometer.c" alt="" coords="304,80,472,107"/>
+<area shape="rect" id="node9" href="$dc/da5/music_8c.xhtml" title="modules/music.c" alt="" coords="497,80,617,107"/>
+</map>

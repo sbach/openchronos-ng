@@ -1,0 +1,6 @@
+<map id="star_long_pressed" name="star_long_pressed">
+<area shape="rect" id="node3" href="$d4/d9d/rtca_8c.xhtml#a4a9416bb8eed18b589af594abff8d051" title="rtca_get_alarm" alt="" coords="201,5,309,32"/>
+<area shape="rect" id="node5" href="$d2/df2/openchronos_8c.xhtml#afb7a89cc8739b9788a27e80d8b0d90e9" title="Enters edit mode." alt="" coords="181,56,328,83"/>
+<area shape="rect" id="node7" href="$df/dce/alarm_8c.xhtml#ac11d2dfb4c4ae0e8458aea46b10f7f49" title="edit_save" alt="" coords="215,107,294,133"/>
+<area shape="rect" id="node9" href="$d4/d9d/rtca_8c.xhtml#a6b57069256e25073819ab5c2cf2ba927" title="rtca_set_alarm" alt="" coords="377,107,485,133"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="up_btn" name="up_btn">
+<area shape="rect" id="node3" href="$d9/d8e/vti__as_8h.xhtml#af27f4b90b36b436e9b0486b48387fdf4" title="change_mode" alt="" coords="133,5,235,32"/>
+<area shape="rect" id="node5" href="$d1/d2d/accelerometer_8c.xhtml#a04a6d2a31e79c09343524b363d57fe7a" title="update_menu" alt="" coords="134,56,234,83"/>
+<area shape="rect" id="node7" href="$db/d85/display_8c.xhtml#a6f2d5cdda31a73b43a569cb3d1a64165" title="Displays several consecutive characters." alt="" coords="302,81,405,108"/>
+<area shape="rect" id="node15" href="$d9/d8e/vti__as_8h.xhtml#a09ea2bd655c59ec47643c5a7a25da589" title="as_read_register" alt="" coords="125,157,243,184"/>
+<area shape="rect" id="node18" href="$db/d85/display_8c.xhtml#a0e030727a1bc4d1418bb96cc71350203" title="Activates a virtual screen." alt="" coords="115,208,253,235"/>
+<area shape="rect" id="node9" href="$db/d85/display_8c.xhtml#a3ae30196af91197037d50cb49de1d109" title="Displays a single character." alt="" coords="454,81,549,108"/>
+<area shape="rect" id="node11" href="$db/d85/display_8c.xhtml#a9275035317878022cf9eacf6b0a5be72" title="Display a custom collection of segments." alt="" coords="597,81,688,108"/>
+<area shape="rect" id="node13" href="$db/d85/display_8c.xhtml#a710739913e8ea1b71dd433b8311211fd" title="write_lcd_mem" alt="" coords="737,81,847,108"/>
+<area shape="rect" id="node20" href="$d2/df2/openchronos_8c.xhtml#a72f5591868e0c66a539eacdcd0b520d7" title="Increment/decrements value by one without exiting the [lower, upper] interval." alt="" coords="306,208,401,235"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="altitude_reconfigure" name="altitude_reconfigure">
+<area shape="rect" id="node3" href="$d8/d28/vti__ps_8c.xhtml#a58b7096908222f24db9c85082d3e5f3d" title="ps_stop" alt="" coords="233,81,301,108"/>
+<area shape="rect" id="node16" href="$d8/d28/vti__ps_8c.xhtml#a194b3e8854517fa03dc6318411d88ba8" title="update_pressure_table" alt="" coords="190,132,343,159"/>
+<area shape="rect" id="node18" href="$d8/d28/vti__ps_8c.xhtml#a212b0d3875c0104d851e6792dc2d6037" title="ps_start" alt="" coords="232,31,301,57"/>
+<area shape="rect" id="node5" href="$d8/d28/vti__ps_8c.xhtml#af2ab66da002d7051cd8e27b63bb04d06" title="ps_write_register" alt="" coords="393,31,514,57"/>
+<area shape="rect" id="node14" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="405,81,501,108"/>
+<area shape="rect" id="node7" href="$d8/d28/vti__ps_8c.xhtml#a5a111736e7d7fbbed73c189ed1d45b81" title="ps_twi_sda" alt="" coords="567,5,655,32"/>
+<area shape="rect" id="node11" href="$d8/d28/vti__ps_8c.xhtml#a49dfd78503815814186a48488c6a991f" title="ps_twi_write" alt="" coords="563,56,658,83"/>
+<area shape="rect" id="node9" href="$d8/d28/vti__ps_8c.xhtml#aeec2d2e61bf0b7d2e9f09c4b4fac4490" title="twi_delay" alt="" coords="707,31,784,57"/>
+</map>

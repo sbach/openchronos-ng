@@ -1,0 +1,4 @@
+<map id="temperature_init" name="temperature_init">
+<area shape="rect" id="node3" href="$dc/ddc/adc12_8c.xhtml#a6202d56d811a4a15e9675420b4b1f8db" title="Init ADC12. Do single conversion. Turn off ADC12." alt="" coords="168,5,336,32"/>
+<area shape="rect" id="node5" href="$df/d41/timer_8c.xhtml#adc3302861aee9d7f4a1c4c6d25d07343" title="1ms &#45; 1s programmable delay" alt="" coords="384,5,480,32"/>
+</map>
